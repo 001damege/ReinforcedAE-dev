@@ -2,6 +2,9 @@ package com.mikazukichandamege.reinforcedae;
 
 import com.mikazukichandamege.reinforcedae.definition.ModCreativeTab;
 import com.mikazukichandamege.reinforcedae.definition.ModItem;
+import com.mikazukichandamege.reinforcedae.integration.appflux.AppFluxItem;
+import com.mikazukichandamege.reinforcedae.integration.ars.ArsItem;
+import com.mikazukichandamege.reinforcedae.integration.botania.BotaniaItem;
 import com.mikazukichandamege.reinforcedae.integration.mekanism.MekanismItem;
 import com.mikazukichandamege.reinforcedae.util.Addon;
 import com.mojang.logging.LogUtils;
@@ -17,6 +20,7 @@ import org.slf4j.Logger;
 public class ReinforcedAE {
 
     public static final String MOD_ID = "reinforcedae";
+    public static final String MOD_NAME = "ReinforcedAE";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ReinforcedAE() {
@@ -27,6 +31,15 @@ public class ReinforcedAE {
 
         if (ModList.get().isLoaded(Addon.Mekanism.getModId())) {
             MekanismItem.init(modEventBus);
+        }
+        if (ModList.get().isLoaded(Addon.Botania.getModId())) {
+            BotaniaItem.init(modEventBus);
+        }
+        if (ModList.get().isLoaded(Addon.Ars.getModId())) {
+            ArsItem.init(modEventBus);
+        }
+        if (ModList.get().isLoaded(Addon.Appflux.getModId())) {
+            AppFluxItem.init(modEventBus);
         }
     }
 

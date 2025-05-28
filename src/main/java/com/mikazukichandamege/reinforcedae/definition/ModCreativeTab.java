@@ -1,6 +1,9 @@
 package com.mikazukichandamege.reinforcedae.definition;
 
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
+import com.mikazukichandamege.reinforcedae.integration.appflux.AppFluxItem;
+import com.mikazukichandamege.reinforcedae.integration.ars.ArsItem;
+import com.mikazukichandamege.reinforcedae.integration.botania.BotaniaItem;
 import com.mikazukichandamege.reinforcedae.integration.mekanism.MekanismItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -23,6 +26,15 @@ public final class ModCreativeTab {
                 }
                 for (var entryMekanismItem : MekanismItem.DR.getEntries()) {
                     output.accept(entryMekanismItem.get());
+                }
+                for (var entryBotaniaItem : BotaniaItem.DR.getEntries()) {
+                    output.accept(entryBotaniaItem.get());
+                }
+                for (var entryArsItem : ArsItem.DR.getEntries()) {
+                    output.accept(entryArsItem.get());
+                }
+                for (var entryAppFluxItem : AppFluxItem.DR.getEntries()) {
+                    output.accept(entryAppFluxItem.get());
                 }
             })
             .build());

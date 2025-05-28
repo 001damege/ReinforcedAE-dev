@@ -85,17 +85,28 @@ dependencies {
     implementation fg.deobf("curse.maven:glodium-957920:5226922") // Glodium
     implementation fg.deobf("curse.maven:guideme-1173950:6489464") // GuideME
     implementation fg.deobf("curse.maven:cloth-config-348521:5729105") // Cloth Config API
+    implementation fg.deobf("curse.maven:curios-309927:6418456") // Curios API
+    implementation fg.deobf("curse.maven:geckolib-388172:6333474") // GeckoLib
+    implementation fg.deobf("curse.maven:patchouli-306770:6164575") // Patchouli
 
     // AE2 + Addon
     implementation fg.deobf("curse.maven:applied-energistics-2-223794:6501484") // Applied Energistics 2
-    implementation fg.deobf("curse.maven:ex-pattern-provider-892005:6518515") // ExtendedAE
+    implementation fg.deobf("curse.maven:ex-pattern-provider-892005:6518515") // Extended AE
     implementation fg.deobf("curse.maven:mega-cells-622112:6175008") // MEGA Cells
+    implementation fg.deobf("curse.maven:advancedae-1084104:6205290") // Advanced AE
+    implementation fg.deobf("curse.maven:applied-flux-965012:6490472") // Applied Flux
 
     // Mekanism
     implementation fg.deobf("curse.maven:mekanism-268560:6258796") // Mekanism
 
+    // Ars Nouveau
+    implementation fg.deobf("curse.maven:ars-nouveau-401955:5894609") // Ars Nouveau
+
+    // Botania
+    implementation fg.deobf("curse.maven:botania-225643:6366547") // Botania
+
     // other
-    fg.deobf("curse.maven:jade-324717:6271651") // Jade
+    runtimeOnly fg.deobf("curse.maven:jade-324717:6271651") // Jade
 }
 
 tasks.named('processResources', ProcessResources).configure {
