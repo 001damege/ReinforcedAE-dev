@@ -5,6 +5,10 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEParts;
 import appeng.core.localization.GuiText;
 import com.mikazukichandamege.reinforcedae.definition.ModItem;
+import com.mikazukichandamege.reinforcedae.integration.advancedae.AdvancedAEIntegration;
+import com.mikazukichandamege.reinforcedae.integration.extendedae.ExtendedAEIntegration;
+import com.mikazukichandamege.reinforcedae.util.Addon;
+import net.minecraftforge.fml.ModList;
 
 import java.util.List;
 
@@ -54,5 +58,16 @@ public class InitUpgrades {
         // Vibrant Chamber
         Upgrades.add(ModItem.SPEED_CARD.get(), AEBlocks.VIBRATION_CHAMBER, 3);
         Upgrades.add(ModItem.ENERGY_CARD.get(), AEBlocks.VIBRATION_CHAMBER, 3);
+
+        // Inscriber
+        Upgrades.add(ModItem.SPEED_CARD.get(), AEBlocks.INSCRIBER, 4);
+
+        if (ModList.get().isLoaded(Addon.ExtendedAE.getModId())) {
+            ExtendedAEIntegration.init();
+        }
+
+        if (ModList.get().isLoaded(Addon.AdvancedAE.getModId())) {
+            AdvancedAEIntegration.init();
+        }
     }
 }

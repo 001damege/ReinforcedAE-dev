@@ -4,7 +4,9 @@ public enum Addon {
     Mekanism("mekanism"),
     Botania("botania"),
     Appflux("appflux"),
-    Ars("ars_nouveau");
+    Ars("ars_nouveau"),
+    ExtendedAE("expatternprovider"),
+    AdvancedAE("advanced_ae");
 
     private final String modId;
 
