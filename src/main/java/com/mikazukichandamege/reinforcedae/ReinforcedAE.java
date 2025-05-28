@@ -6,12 +6,14 @@ import com.mikazukichandamege.reinforcedae.integration.appflux.AppFluxItem;
 import com.mikazukichandamege.reinforcedae.integration.ars.ArsItem;
 import com.mikazukichandamege.reinforcedae.integration.botania.BotaniaItem;
 import com.mikazukichandamege.reinforcedae.integration.mekanism.MekanismItem;
+import com.mikazukichandamege.reinforcedae.item.upgrade.InitUpgrades;
 import com.mikazukichandamege.reinforcedae.util.Addon;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -41,10 +43,23 @@ public class ReinforcedAE {
         if (ModList.get().isLoaded(Addon.Appflux.getModId())) {
             AppFluxItem.init(modEventBus);
         }
+
+        modEventBus.addListener(this::commonSetup);
     }
 
     public static ResourceLocation makeId(String path) {
         return new ResourceLocation(MOD_ID, path);
     }
 
+    public void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(this::postRegistrationInitialization).whenComplete((res, err) -> {
+            if (err != null) {
+                LOGGER.warn(String.valueOf(err));
+            }
+        });
+    }
+
+    public void postRegistrationInitialization() {
+        InitUpgrades.init();
+    }
 }
