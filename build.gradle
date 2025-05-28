@@ -72,10 +72,6 @@ repositories {
         name = "Modmaven"
         url = "https://modmaven.dev/"
     }
-    maven {
-        url "https://maven.tterrag.com/"
-    }
-    mavenLocal()
 }
 
 dependencies {
@@ -100,12 +96,7 @@ dependencies {
 
     // other
     fg.deobf("curse.maven:jade-324717:6271651") // Jade
-
-    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
-    jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "${registrate_version_range}")
 }
-
-jarJar.enable()
 
 tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [
