@@ -2,9 +2,12 @@ package com.mikazukichandamege.reinforcedae;
 
 import com.mikazukichandamege.reinforcedae.definition.ModCreativeTab;
 import com.mikazukichandamege.reinforcedae.definition.ModItem;
+import com.mikazukichandamege.reinforcedae.integration.mekanism.MekanismItem;
+import com.mikazukichandamege.reinforcedae.util.Addon;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
@@ -21,6 +24,10 @@ public class ReinforcedAE {
 
         ModCreativeTab.init(modEventBus);
         ModItem.init(modEventBus);
+
+        if (ModList.get().isLoaded(Addon.Mekanism.getModId())) {
+            MekanismItem.init(modEventBus);
+        }
     }
 
     public static ResourceLocation makeId(String path) {
