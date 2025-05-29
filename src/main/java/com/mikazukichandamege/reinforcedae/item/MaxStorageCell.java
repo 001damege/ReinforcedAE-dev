@@ -11,6 +11,7 @@ import appeng.items.AEBaseItem;
 import appeng.items.contents.CellConfig;
 import appeng.util.ConfigInventory;
 import appeng.util.InteractionUtil;
+import com.mikazukichandamege.reinforcedae.definition.ModItem;
 import com.mikazukichandamege.reinforcedae.interfaces.ExBasicCellItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -24,12 +25,15 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ExStorageCell extends AEBaseItem implements ExBasicCellItem, AEToolItem {
+public class MaxStorageCell extends AEBaseItem implements ExBasicCellItem, AEToolItem {
 
     protected final ItemLike coreItem;
     protected final ItemLike housingItem;
@@ -39,35 +43,26 @@ public class ExStorageCell extends AEBaseItem implements ExBasicCellItem, AETool
     protected final int totalTypes;
     private final AEKeyType keyType;
 
-    public ExStorageCell(Properties properties, ItemLike coreItem, ItemLike housingItem, double idleDrain, long inBytes, long bytesPerType, int totalTypes, AEKeyType keyType) {
-        super(properties);
-        this.idleDrain = idleDrain;
-        this.totalBytes = inBytes * 1024;
-        this.coreItem = coreItem;
+    public MaxStorageCell(Properties properties, ItemLike housingItem, AEKeyType keyType) {
+        super(properties.stacksTo(1));
+        this.coreItem = ModItem.MAX_STORAGE_COMPONENT.get();
         this.housingItem = housingItem;
-        this.bytesPerType = bytesPerType;
-        this.totalTypes = totalTypes;
+        this.idleDrain = 300.0f;
+        this.totalBytes = Long.MAX_VALUE / 1024;
+        this.bytesPerType = Integer.MAX_VALUE / 1024;
+        this.totalTypes = 128;
         this.keyType = keyType;
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> lines, TooltipFlag advancedTooltips) {
-        addCellInformationTooltip(stack, lines);
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        addCellInformationTooltip(pStack, pTooltipComponents);
     }
 
     @Override
-    public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
-        return super.getTooltipImage(stack);
-    }
-
-    @Override
-    public ConfigInventory getConfigInventory(ItemStack is) {
-        return CellConfig.create(keyType.filter(), is);
-    }
-
-    @Override
-    public IUpgradeInventory getUpgrades(ItemStack stack) {
-        return UpgradeInventories.forItem(stack, keyType == AEKeyType.items() ? 4 : 3);
+    public Optional<TooltipComponent> getTooltipImage(ItemStack pStack) {
+        return getCellTooltipImage(pStack);
     }
 
     @Override
@@ -77,40 +72,56 @@ public class ExStorageCell extends AEBaseItem implements ExBasicCellItem, AETool
 
     @Override
     public long getBytes(ItemStack cellItem) {
-        return this.totalBytes;
+        return 0;
     }
 
     @Override
     public long getBytesPerType(ItemStack cellItem) {
-        return bytesPerType;
+        return this.bytesPerType;
     }
 
     @Override
     public int getTotalTypes(ItemStack cellItem) {
-        return totalTypes;
+        return this.totalTypes;
     }
 
     @Override
     public double getIdleDrain() {
-        return idleDrain;
+        return this.idleDrain;
     }
 
     @Override
-    public FuzzyMode getFuzzyMode(ItemStack stack) {
-        final String fz = stack.getOrCreateTag().getString("FuzzyMode");
-        if (fz.isEmpty()) {
+    public IUpgradeInventory getUpgrades(ItemStack stack) {
+        return UpgradeInventories.forItem(stack, keyType == AEKeyType.items() ? 4: 3);
+    }
+
+    @Override
+    public ConfigInventory getConfigInventory(ItemStack is) {
+        return CellConfig.create(keyType.filter(), is);
+    }
+
+    @Override
+    public FuzzyMode getFuzzyMode(ItemStack itemStack) {
+        final String fuzzy = itemStack.getOrCreateTag().getString("FuzzyMode");
+        if (fuzzy.isEmpty()) {
             return FuzzyMode.IGNORE_ALL;
         }
         try {
-            return FuzzyMode.valueOf(fz);
-        } catch (Throwable t) {
+            return FuzzyMode.valueOf(fuzzy);
+        } catch (Throwable e) {
             return FuzzyMode.IGNORE_ALL;
         }
     }
 
     @Override
-    public void setFuzzyMode(ItemStack stack, FuzzyMode fuzzyMode) {
-        stack.getOrCreateTag().putString("FuzzyMode", fuzzyMode.name());
+    public void setFuzzyMode(ItemStack itemStack, FuzzyMode fuzzyMode) {
+        itemStack.getOrCreateTag().putString("FuzzyMode", fuzzyMode.name());
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(@NotNull Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
+        this.disassembleDrive(pPlayer.getItemInHand(pUsedHand), pLevel, pPlayer);
+        return new InteractionResultHolder<>(InteractionResult.sidedSuccess(pLevel.isClientSide()), pPlayer.getItemInHand(pUsedHand));
     }
 
     private boolean disassembleDrive(ItemStack stack, Level level, Player player) {
@@ -120,13 +131,12 @@ public class ExStorageCell extends AEBaseItem implements ExBasicCellItem, AETool
             }
 
             final Inventory playerInventory = player.getInventory();
-            var inv = StorageCells.getCellInventory(stack, null);
-            if (inv != null && playerInventory.getSelected() == stack) {
-                var list = inv.getAvailableStacks();
+            var inventory = StorageCells.getCellInventory(stack, null);
+            if (inventory != null && playerInventory.getSelected() == stack) {
+                var list = inventory.getAvailableStacks();
                 if (list.isEmpty()) {
                     playerInventory.setItem(playerInventory.selected, ItemStack.EMPTY);
                     playerInventory.placeItemBackInInventory(new ItemStack(coreItem));
-
                     for (var upgrade : this.getUpgrades(stack)) {
                         playerInventory.placeItemBackInInventory(upgrade);
                     }
@@ -138,13 +148,6 @@ public class ExStorageCell extends AEBaseItem implements ExBasicCellItem, AETool
             }
         }
         return false;
-    }
-
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        this.disassembleDrive(player.getItemInHand(hand), level, player);
-        return new InteractionResultHolder<>(InteractionResult.sidedSuccess(level.isClientSide()),
-                player.getItemInHand(hand));
     }
 
     @Override

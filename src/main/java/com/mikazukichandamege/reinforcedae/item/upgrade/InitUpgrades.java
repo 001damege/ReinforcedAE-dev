@@ -2,6 +2,7 @@ package com.mikazukichandamege.reinforcedae.item.upgrade;
 
 import appeng.api.upgrades.Upgrades;
 import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
 import appeng.core.localization.GuiText;
 import com.mikazukichandamege.reinforcedae.definition.ModItem;
@@ -61,6 +62,19 @@ public class InitUpgrades {
 
         // Inscriber
         Upgrades.add(ModItem.SPEED_CARD.get(), AEBlocks.INSCRIBER, 4);
+
+        var itemCell = ModItem.ITEM_CELL.get();
+        // Item Cell
+        Upgrades.add(INVERTER_CARD, itemCell, 1);
+        Upgrades.add(EQUAL_DISTRIBUTION_CARD, itemCell, 1);
+        Upgrades.add(FUZZY_CARD, itemCell, 1);
+        Upgrades.add(VOID_CARD, itemCell, 1);
+
+        var fluidCell = ModItem.FLUID_CELL.get();
+        // Fluid Cell
+        Upgrades.add(INVERTER_CARD, fluidCell, 1);
+        Upgrades.add(EQUAL_DISTRIBUTION_CARD, fluidCell, 1);
+        Upgrades.add(VOID_CARD, fluidCell, 1);
 
         if (ModList.get().isLoaded(Addon.ExtendedAE.getModId())) {
             ExtendedAEIntegration.init();

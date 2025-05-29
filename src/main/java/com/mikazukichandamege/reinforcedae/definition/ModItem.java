@@ -1,10 +1,12 @@
 package com.mikazukichandamege.reinforcedae.definition;
 
+import appeng.api.stacks.AEKeyType;
 import appeng.api.upgrades.Upgrades;
 import appeng.items.materials.EnergyCardItem;
 import appeng.items.materials.MaterialItem;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
-import com.mikazukichandamege.reinforcedae.item.ExStorageComponentItem;
+import com.mikazukichandamege.reinforcedae.item.MaxStorageCell;
+import com.mikazukichandamege.reinforcedae.item.MaxStorageComponentItem;
 import com.mikazukichandamege.reinforcedae.item.kit.ItemDriveKit;
 import com.mikazukichandamege.reinforcedae.item.kit.ItemIOBusKit;
 import com.mikazukichandamege.reinforcedae.item.kit.ItemInterfaceKit;
@@ -60,8 +62,9 @@ public final class ModItem {
     public static final RegistryObject<Item> CHAOS_PICKAXE = item("chaos_pickaxe", ItemChaosPickaxe::new);
     public static final RegistryObject<Item> CHAOS_AXE = item("chaos_axe", ItemChaosAxe::new);
 
-    public static final RegistryObject<Item> MAX_STORAGE_COMPONENT = item("max_storage_component", p -> new ExStorageComponentItem(p, Integer.MAX_VALUE));
-
+    public static final RegistryObject<Item> MAX_STORAGE_COMPONENT = item("max_storage_component", MaxStorageComponentItem::new);
+    public static final RegistryObject<Item> ITEM_CELL = item("max_item_cell", p -> new MaxStorageCell(p, ITEM_CELL_HOUSING.get(), AEKeyType.items()));
+    public static final RegistryObject<Item> FLUID_CELL = item("max_fluid_cell", p -> new MaxStorageCell(p, FLUID_CELL_HOUSING.get(), AEKeyType.fluids()));
 
     public static RegistryObject<Item> item(String id, Function<Item.Properties, ? extends Item> factory) {
         return DR.register(id, () -> factory.apply(new Item.Properties()));
