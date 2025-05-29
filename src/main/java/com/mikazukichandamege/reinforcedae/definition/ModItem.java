@@ -9,7 +9,13 @@ import com.mikazukichandamege.reinforcedae.item.kit.ItemDriveKit;
 import com.mikazukichandamege.reinforcedae.item.kit.ItemIOBusKit;
 import com.mikazukichandamege.reinforcedae.item.kit.ItemInterfaceKit;
 import com.mikazukichandamege.reinforcedae.item.kit.ItemPatternProviderKit;
-import com.mikazukichandamege.reinforcedae.item.material.ItemProcessor;
+import com.mikazukichandamege.reinforcedae.item.material.ItemChaos;
+import com.mikazukichandamege.reinforcedae.item.material.ItemEternal;
+import com.mikazukichandamege.reinforcedae.item.material.ItemInfinity;
+import com.mikazukichandamege.reinforcedae.item.material.ItemSingularity;
+import com.mikazukichandamege.reinforcedae.item.tool.ItemChaosAxe;
+import com.mikazukichandamege.reinforcedae.item.tool.ItemChaosPickaxe;
+import com.mikazukichandamege.reinforcedae.item.tool.ItemChaosSword;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,14 +32,19 @@ public final class ModItem {
     public static final RegistryObject<Item> ENERGY_CARD = item("compressed_energy_card", p -> new EnergyCardItem(p, 5));
     public static final RegistryObject<Item> ITEM_CELL_HOUSING = item("reinforced_item_cell_housing", MaterialItem::new);
     public static final RegistryObject<Item> FLUID_CELL_HOUSING = item("reinforced_fluid_cell_housing", MaterialItem::new);
-    public static final RegistryObject<Item> ETERNAL_PROCESSOR = item("eternal_processor", ItemProcessor::new);
+    public static final RegistryObject<Item> ETERNAL_PROCESSOR = item("eternal_processor", ItemEternal::new);
     public static final RegistryObject<Item> ETERNAL_PROCESSOR_PRINT = item("printed_eternal_processor", MaterialItem::new);
-    public static final RegistryObject<Item> SINGULARITY_PROCESSOR = item("singularity_processor", ItemProcessor::new);
+    public static final RegistryObject<Item> SINGULARITY_PROCESSOR = item("singularity_processor", ItemSingularity::new);
     public static final RegistryObject<Item> SINGULARITY_PROCESSOR_PRINT = item("printed_singularity_processor", MaterialItem::new);
-    public static final RegistryObject<Item> INFINITY_PROCESSOR = item("infinity_processor", ItemProcessor::new);
+    public static final RegistryObject<Item> INFINITY_PROCESSOR = item("infinity_processor", ItemInfinity::new);
     public static final RegistryObject<Item> INFINITY_PROCESSOR_PRINT = item("printed_infinity_processor", MaterialItem::new);
-    public static final RegistryObject<Item> CHAOS_PROCESSOR = item("chaos_processor", ItemProcessor::new);
+    public static final RegistryObject<Item> CHAOS_PROCESSOR = item("chaos_processor", ItemChaos::new);
     public static final RegistryObject<Item> CHAOS_PROCESSOR_PRINT = item("printed_chaos_processor", MaterialItem::new);
+
+    public static final RegistryObject<Item> ETERNAL_INGOT = item("eternal_ingot", ItemEternal::new);
+    public static final RegistryObject<Item> SINGULARITY_INGOT = item("singularity_ingot", ItemSingularity::new);
+    public static final RegistryObject<Item> INFINITY_INGOT = item("infinity_ingot", ItemInfinity::new);
+    public static final RegistryObject<Item> CHAOS_INGOT = item("chaos_ingot", ItemChaos::new);
 
     public static final RegistryObject<Item> ETERNAL_PROCESSOR_PRESS = item("eternal_processor_press", MaterialItem::new);
     public static final RegistryObject<Item> SINGULARITY_PROCESSOR_PRESS = item("singularity_processor_press", MaterialItem::new);
@@ -44,6 +55,10 @@ public final class ModItem {
     public static final RegistryObject<Item> INTERFACE_KIT = item("reinforced_interface_kit", ItemInterfaceKit::new);
     public static final RegistryObject<Item> IO_BUS_KIT = item("reinforced_io_bus_kit", ItemIOBusKit::new);
     public static final RegistryObject<Item> DRIVE_KIT = item("reinforced_drive_kit", ItemDriveKit::new);
+
+    public static final RegistryObject<Item> CHAOS_SWORD = item("chaos_sword", ItemChaosSword::new);
+    public static final RegistryObject<Item> CHAOS_PICKAXE = item("chaos_pickaxe", ItemChaosPickaxe::new);
+    public static final RegistryObject<Item> CHAOS_AXE = item("chaos_axe", ItemChaosAxe::new);
 
     public static final RegistryObject<Item> MAX_STORAGE_COMPONENT = item("max_storage_component", p -> new ExStorageComponentItem(p, Integer.MAX_VALUE));
 

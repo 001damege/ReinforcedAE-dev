@@ -6,7 +6,8 @@ public enum Addon {
     Appflux("appflux"),
     Ars("ars_nouveau"),
     ExtendedAE("expatternprovider"),
-    AdvancedAE("advanced_ae");
+    AdvancedAE("advanced_ae"),
+    Avaritia("avaritia");
 
     private final String modId;
 
