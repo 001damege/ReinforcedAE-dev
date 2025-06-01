@@ -45,6 +45,4 @@ public class ItemUpgradeBase extends Item {
             pTooltipComponents.addAll(supportedBy);
         }
     }
-
-    
 }

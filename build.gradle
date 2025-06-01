@@ -95,6 +95,8 @@ dependencies {
     implementation fg.deobf("curse.maven:mega-cells-622112:6175008") // MEGA Cells
     implementation fg.deobf("curse.maven:advancedae-1084104:6205290") // Advanced AE
     implementation fg.deobf("curse.maven:applied-flux-965012:6490472") // Applied Flux
+    implementation fg.deobf("curse.maven:ars-energistique-905641:5504444") // Ars Énergistique
+    implementation fg.deobf("curse.maven:applied-botanics-addon-610632:4904185") // Applied Botanics Addon
 
     // Mekanism
     implementation fg.deobf("curse.maven:mekanism-268560:6258796") // Mekanism

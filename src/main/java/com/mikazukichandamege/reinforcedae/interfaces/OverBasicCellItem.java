@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 import java.util.Optional;
 
-public interface ExBasicCellItem extends ICellWorkbenchItem {
+public interface OverBasicCellItem extends ICellWorkbenchItem {
     AEKeyType getKeyType();
 
     long getBytes(ItemStack cellItem);

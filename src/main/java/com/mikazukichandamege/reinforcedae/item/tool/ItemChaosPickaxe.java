@@ -1,7 +1,6 @@
 package com.mikazukichandamege.reinforcedae.item.tool;
 
-import appeng.core.localization.GuiText;
-import appeng.hooks.IntrinsicEnchantItem;
+import com.google.common.collect.Sets;
 import com.mikazukichandamege.reinforcedae.util.ModRarity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -9,27 +8,27 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.TierSortingRegistry;
-import net.minecraftforge.server.command.TextComponentHelper;
-import org.jetbrains.annotations.NotNull;
+import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Set;
 
-public class ItemChaosPickaxe extends PickaxeItem implements IntrinsicEnchantItem {
+public class ItemChaosPickaxe extends PickaxeItem {
+
+    private static final Set<ToolAction> DIG_ACTION = Sets.newHashSet(ToolActions.AXE_DIG, ToolActions.PICKAXE_DIG, ToolActions.SHOVEL_DIG, ToolActions.HOE_DIG, ToolActions.SWORD_DIG);
 
     public ItemChaosPickaxe(Properties properties) {
-        super(ModToolTier.CHAOS_TIER, Integer.MAX_VALUE, 5.0f, properties.rarity(ModRarity.CHAOS).fireResistant().stacksTo(1));
+        super(ModToolTier.CHAOS_TIER, 1, 5.0f, properties.rarity(ModRarity.CHAOS).fireResistant().stacksTo(1));
     }
 
     @Override
-    public float getDestroySpeed(@NotNull ItemStack pStack, BlockState pState) {
-        if (pState.is(BlockTags.MINEABLE_WITH_PICKAXE)) return 8888.0f;
-        return Math.max(super.getDestroySpeed(pStack, pState), 9999.0f);
+    public float getDestroySpeed(ItemStack pStack, BlockState pState) {
+        if (pState.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
+        return super.getDestroySpeed(pStack, pState);
     }
 
     @Override
@@ -43,26 +42,28 @@ public class ItemChaosPickaxe extends PickaxeItem implements IntrinsicEnchantIte
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(TextComponentHelper.createComponentTranslation(null, "indestructible", new Object()).withStyle(ChatFormatting.GOLD));
-        pTooltipComponents.add(GuiText.IntrinsicEnchant.text(Enchantments.BLOCK_FORTUNE.getFullname(10)));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag advancedTooltip) {
+        tooltip.add(Component.translatable("tooltip.reinforcedae.indestructible").withStyle(ChatFormatting.GOLD));
+        super.appendHoverText(stack, level, tooltip, advancedTooltip);
     }
 
     @Override
     public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
-        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return TierSortingRegistry.isCorrectTierForDrops(ModToolTier.CHAOS_TIER, state);
-        if (state.is(ModToolTier.CHAOS_TOOL_TAG)) return TierSortingRegistry.isCorrectTierForDrops(ModToolTier.CHAOS_TIER, state);
-        return false;
-    }
-
-    @Override
-    public int getIntrinsicEnchantLevel(ItemStack itemStack, Enchantment enchantment) {
-        return enchantment == Enchantments.BLOCK_FORTUNE ? 20 : 0;
+        return true;
     }
 
     @Override
     public boolean isFoil(ItemStack pStack) {
         return true;
+    }
+
+    @Override
+    public int getEnchantmentValue(ItemStack stack) {
+        return 30;
+    }
+
+    @Override
+    public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
+        return DIG_ACTION.contains(toolAction);
     }
 }
