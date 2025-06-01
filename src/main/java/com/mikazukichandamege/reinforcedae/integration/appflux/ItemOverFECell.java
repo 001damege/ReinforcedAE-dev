@@ -109,7 +109,7 @@ public class ItemOverFECell extends AEBaseItem implements IFluxCell {
                     for (var upgrade : this.getUpgrades(stack)) {
                         playerInventory.placeItemBackInInventory(upgrade);
                     }
-                    playerInventory.placeItemBackInInventory(new ItemStack(this.getHousing().getItem()));
+                    playerInventory.placeItemBackInInventory(new ItemStack(AppFluxItem.FLUX_CELL_HOUSING.get()));
                     return true;
                 } else {
                     player.displayClientMessage(PlayerMessages.OnlyEmptyCellsCanBeDisassembled.text(), true);
@@ -117,10 +117,6 @@ public class ItemOverFECell extends AEBaseItem implements IFluxCell {
             }
         }
         return false;
-    }
-
-    public ItemStack getHousing() {
-        return new ItemStack(AppFluxItem.FLUX_CELL_HOUSING.get());
     }
 
     @Override

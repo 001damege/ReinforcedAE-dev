@@ -7,6 +7,8 @@ import appeng.core.localization.GuiText;
 import com.mikazukichandamege.reinforcedae.definition.ModItem;
 import com.mikazukichandamege.reinforcedae.integration.advancedae.AdvancedAEIntegration;
 import com.mikazukichandamege.reinforcedae.integration.appflux.AppFluxIntegration;
+import com.mikazukichandamege.reinforcedae.integration.ars.ArsIntegration;
+import com.mikazukichandamege.reinforcedae.integration.botania.BotaniaIntegration;
 import com.mikazukichandamege.reinforcedae.integration.extendedae.ExtendedAEIntegration;
 import com.mikazukichandamege.reinforcedae.util.Addon;
 import net.minecraftforge.fml.ModList;
@@ -86,6 +88,14 @@ public class InitUpgrades {
 
         if (ModList.get().isLoaded(Addon.Appflux.getModId())) {
             AppFluxIntegration.init();
+        }
+
+        if (ModList.get().isLoaded(Addon.Ars.getModId())) {
+            ArsIntegration.init();
+        }
+
+        if (ModList.get().isLoaded(Addon.Botania.getModId())) {
+            BotaniaIntegration.init();
         }
     }
 }
