@@ -1,4 +1,4 @@
-package com.mikazukichandamege.reinforcedae.item;
+package com.mikazukichandamege.reinforcedae.item.kit;
 
 import appeng.api.parts.IPart;
 import appeng.api.parts.IPartItem;
@@ -18,12 +18,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.List;
 
-public class ItemUpgradeBase extends Item {
+public class ItemKitBase extends Item {
     private record BlockEntityPair(Block block, Class<? extends BlockEntity> blockEntity) {}
     private final HashMap<Class<? extends BlockEntity>, BlockEntityPair> BLOCK_MAP = new HashMap<>();
     private final HashMap<Class<? extends IPart>, IPartItem<?>> PART_MAP = new HashMap<>();
 
-    public ItemUpgradeBase(Properties pProperties) {
+    public ItemKitBase(Properties pProperties) {
         super(pProperties);
     }
 

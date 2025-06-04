@@ -19,7 +19,7 @@ public final class ModCreativeTab {
 
     public static final RegistryObject<CreativeModeTab> TAB = DR.register(ID, () -> CreativeModeTab.builder()
             .title(Component.translatable(ID))
-            .icon(() -> ModItem.CHAOS_PROCESSOR.get().asItem().getDefaultInstance())
+            .icon(() -> ModItem.OPTICS_PROCESSOR.get().asItem().getDefaultInstance())
             .displayItems((display, output) -> {
                 for (var entryItem : ModItem.DR.getEntries()) {
                     output.accept(entryItem.get());

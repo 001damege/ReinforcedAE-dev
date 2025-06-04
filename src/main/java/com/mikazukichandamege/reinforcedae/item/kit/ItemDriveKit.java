@@ -1,8 +1,6 @@
 package com.mikazukichandamege.reinforcedae.item.kit;
 
-import com.mikazukichandamege.reinforcedae.item.ItemUpgradeBase;
-
-public class ItemDriveKit extends ItemUpgradeBase {
+public class ItemDriveKit extends ItemKitBase {
     public ItemDriveKit(Properties properties) {
         super(properties);
     }

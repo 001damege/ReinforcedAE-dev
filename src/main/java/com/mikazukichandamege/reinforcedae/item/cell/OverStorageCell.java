@@ -1,4 +1,4 @@
-package com.mikazukichandamege.reinforcedae.item;
+package com.mikazukichandamege.reinforcedae.item.cell;
 
 import appeng.api.config.FuzzyMode;
 import appeng.api.stacks.AEKeyType;
@@ -12,7 +12,7 @@ import appeng.items.contents.CellConfig;
 import appeng.util.ConfigInventory;
 import appeng.util.InteractionUtil;
 import com.mikazukichandamege.reinforcedae.definition.ModItem;
-import com.mikazukichandamege.reinforcedae.interfaces.OverBasicCellItem;
+import com.mikazukichandamege.reinforcedae.interfaces.IOverCellItem;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -23,7 +23,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 
-public class OverStorageCell extends AEBaseItem implements OverBasicCellItem, AEToolItem {
+public class OverStorageCell extends AEBaseItem implements IOverCellItem, AEToolItem {
 
     private final ItemLike housingItem;
     private final AEKeyType keyType;
@@ -36,55 +36,39 @@ public class OverStorageCell extends AEBaseItem implements OverBasicCellItem, AE
 
     @Override
     public AEKeyType getKeyType() {
-        return this.keyType;
+        return keyType;
     }
 
     @Override
-    public long getBytes(ItemStack cellItem) {
-        return Long.MAX_VALUE;
+    public long getBytes() {
+        return Long.MAX_VALUE - 10240;
     }
 
     @Override
-    public long getBytesPerType(ItemStack cellItem) {
-        return 0;
+    public int getBytePerType() {
+        return 1048576;
     }
 
     @Override
-    public int getTotalTypes(ItemStack cellItem) {
+    public int getTotalTypes() {
         return 315;
     }
 
     @Override
-    public double getIdleDrain() {
-        return 5.0;
-    }
-
-    @Override
-    public IUpgradeInventory getUpgrades(ItemStack stack) {
-        return UpgradeInventories.forItem(stack, keyType == AEKeyType.items() ? 4 : 3);
-    }
-
-    @Override
-    public ConfigInventory getConfigInventory(ItemStack is) {
-        return CellConfig.create(keyType.filter(), is);
-    }
-
-    @Override
-    public FuzzyMode getFuzzyMode(ItemStack is) {
-        final String fz = is.getOrCreateTag().getString("FuzzyMode");
-        if (fz.isEmpty()) {
+    public FuzzyMode getFuzzyMode(ItemStack stack) {
+        final String fuzzy = stack.getOrCreateTag().getString("FuzzyMode");
+        if (fuzzy.isEmpty()) {
             return FuzzyMode.IGNORE_ALL;
-        }
-        try {
-            return FuzzyMode.valueOf(fz);
+        } try {
+            return FuzzyMode.valueOf(fuzzy);
         } catch (Exception e) {
             return FuzzyMode.IGNORE_ALL;
         }
     }
 
     @Override
-    public void setFuzzyMode(ItemStack is, FuzzyMode fzMode) {
-        is.getOrCreateTag().putString("FuzzyMode", fzMode.name());
+    public void setFuzzyMode(ItemStack stack, FuzzyMode fuzzy) {
+        stack.getOrCreateTag().putString("FuzzyMode", fuzzy.name());
     }
 
     @Override
@@ -124,5 +108,15 @@ public class OverStorageCell extends AEBaseItem implements OverBasicCellItem, AE
         return this.disassembleDrive(stack, context.getLevel(), context.getPlayer())
                 ? InteractionResult.sidedSuccess(context.getLevel().isClientSide())
                 : InteractionResult.PASS;
+    }
+
+    @Override
+    public IUpgradeInventory getUpgrades(ItemStack stack) {
+        return UpgradeInventories.forItem(stack, keyType == AEKeyType.items() ? 4 : 3);
+    }
+
+    @Override
+    public ConfigInventory getConfigInventory(ItemStack is) {
+        return CellConfig.create(keyType.filter(), is);
     }
 }

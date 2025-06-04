@@ -5,7 +5,7 @@ import appeng.api.upgrades.Upgrades;
 import appeng.items.materials.EnergyCardItem;
 import appeng.items.materials.MaterialItem;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
-import com.mikazukichandamege.reinforcedae.item.OverStorageCell;
+import com.mikazukichandamege.reinforcedae.item.cell.OverStorageCell;
 import com.mikazukichandamege.reinforcedae.item.kit.ItemDriveKit;
 import com.mikazukichandamege.reinforcedae.item.kit.ItemIOBusKit;
 import com.mikazukichandamege.reinforcedae.item.kit.ItemInterfaceKit;
@@ -26,11 +26,11 @@ public final class ModItem {
     public static final DeferredRegister<Item> DR = DeferredRegister.create(ForgeRegistries.ITEMS, ReinforcedAE.MOD_ID);
 
     public static final RegistryObject<Item> SPEED_CARD = item("compressed_speed_card", Upgrades::createUpgradeCardItem);
-    public static final RegistryObject<Item> ENERGY_CARD = item("compressed_energy_card", p -> new EnergyCardItem(p, 5));
+    public static final RegistryObject<Item> ENERGY_CARD = item("compressed_energy_card", p -> new EnergyCardItem(p, 9));
     public static final RegistryObject<Item> ITEM_CELL_HOUSING = item("reinforced_item_cell_housing", MaterialItem::new);
     public static final RegistryObject<Item> FLUID_CELL_HOUSING = item("reinforced_fluid_cell_housing", MaterialItem::new);
-    public static final RegistryObject<Item> CHAOS_PROCESSOR = item("chaos_processor", ItemChaos::new);
-    public static final RegistryObject<Item> CHAOS_PROCESSOR_PRINT = item("printed_chaos_processor", MaterialItem::new);
+    public static final RegistryObject<Item> OPTICS_PROCESSOR = item("optics_processor", MaterialItem::new);
+    public static final RegistryObject<Item> OPTICS_PROCESSOR_PRINT = item("printed_optics_processor", MaterialItem::new);
     public static final RegistryObject<Item> CHAOS_INGOT = item("chaos_ingot", ItemChaos::new);
     public static final RegistryObject<Item> CHAOS_PROCESSOR_PRESS = item("chaos_processor_press", MaterialItem::new);
 
@@ -43,6 +43,7 @@ public final class ModItem {
     public static final RegistryObject<Item> CHAOS_PICKAXE = item("chaos_pickaxe", ItemChaosPickaxe::new);
 
     public static final RegistryObject<Item> OVER_STORAGE_COMPONENT = item("over_storage_component", MaterialItem::new);
+
     public static final RegistryObject<Item> OVER_ITEM_CELL = item("over_item_cell", p -> new OverStorageCell(ITEM_CELL_HOUSING.get(), AEKeyType.items()));
     public static final RegistryObject<Item> OVER_FLUID_CELL = item("over_fluid_cell", p -> new OverStorageCell(FLUID_CELL_HOUSING.get(), AEKeyType.fluids()));
 

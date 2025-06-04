@@ -1,8 +1,6 @@
 package com.mikazukichandamege.reinforcedae.item.kit;
 
-import com.mikazukichandamege.reinforcedae.item.ItemUpgradeBase;
-
-public class ItemIOBusKit extends ItemUpgradeBase {
+public class ItemIOBusKit extends ItemKitBase {
     public ItemIOBusKit(Properties properties) {
         super(properties);
     }

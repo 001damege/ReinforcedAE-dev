@@ -40,15 +40,8 @@ import java.util.Optional;
 
 public class ItemOverFECell extends AEBaseItem implements IFluxCell {
 
-    private final ItemLike coreItem;
-    private final long totalBytes;
-    private final double idleDrain;
-
     public ItemOverFECell(Properties properties) {
         super(properties.stacksTo(1));
-        this.coreItem = ModItem.OVER_STORAGE_COMPONENT.get();
-        this.totalBytes = Long.MAX_VALUE;
-        this.idleDrain = 5.0;
     }
 
     @Override
@@ -63,12 +56,12 @@ public class ItemOverFECell extends AEBaseItem implements IFluxCell {
 
     @Override
     public long getBytes(ItemStack itemStack) {
-        return this.totalBytes;
+        return Long.MAX_VALUE - 10240;
     }
 
     @Override
     public double getIdleDrain() {
-        return this.idleDrain;
+        return 5.0;
     }
 
     @Override
@@ -105,7 +98,7 @@ public class ItemOverFECell extends AEBaseItem implements IFluxCell {
                 var list = inventory.getAvailableStacks();
                 if (list.isEmpty()) {
                     playerInventory.setItem(playerInventory.selected, ItemStack.EMPTY);
-                    playerInventory.placeItemBackInInventory(new ItemStack(coreItem));
+                    playerInventory.placeItemBackInInventory(new ItemStack(ModItem.OVER_STORAGE_COMPONENT.get()));
                     for (var upgrade : this.getUpgrades(stack)) {
                         playerInventory.placeItemBackInInventory(upgrade);
                     }

@@ -32,7 +32,7 @@ public class ItemOverManaCell extends AEBaseItem implements IManaCellItem, AEToo
 
     @Override
     public long getTotalBytes() {
-        return Long.MAX_VALUE;
+        return Long.MAX_VALUE - 10240;
     }
 
     @Override

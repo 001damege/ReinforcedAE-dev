@@ -97,6 +97,7 @@ dependencies {
     implementation fg.deobf("curse.maven:applied-flux-965012:6490472") // Applied Flux
     implementation fg.deobf("curse.maven:ars-energistique-905641:5504444") // Ars Énergistique
     implementation fg.deobf("curse.maven:applied-botanics-addon-610632:4904185") // Applied Botanics Addon
+    implementation fg.deobf("curse.maven:applied-mekanistics-574300:4842281") // Applied Mekanistics
 
     // Mekanism
     implementation fg.deobf("curse.maven:mekanism-268560:6258796") // Mekanism

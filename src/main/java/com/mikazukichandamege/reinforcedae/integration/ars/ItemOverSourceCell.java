@@ -34,7 +34,7 @@ public class ItemOverSourceCell extends AEBaseItem implements ISourceCellItem {
 
     @Override
     public long getTotalBytes() {
-        return Long.MAX_VALUE;
+        return Long.MAX_VALUE - 10240;
     }
 
     @Override

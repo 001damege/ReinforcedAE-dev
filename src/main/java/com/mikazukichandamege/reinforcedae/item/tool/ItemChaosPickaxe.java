@@ -1,38 +1,38 @@
 package com.mikazukichandamege.reinforcedae.item.tool;
 
-import com.google.common.collect.Sets;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import com.mikazukichandamege.reinforcedae.util.ModRarity;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
+import net.minecraft.nbt.Tag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.common.ToolActions;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
-import java.util.Set;
+import net.minecraftforge.server.command.TextComponentHelper;
+import org.jetbrains.annotations.NotNull;
 
 public class ItemChaosPickaxe extends PickaxeItem {
 
-    private static final Set<ToolAction> DIG_ACTION = Sets.newHashSet(ToolActions.AXE_DIG, ToolActions.PICKAXE_DIG, ToolActions.SHOVEL_DIG, ToolActions.HOE_DIG, ToolActions.SWORD_DIG);
-
-    public ItemChaosPickaxe(Properties properties) {
-        super(ModToolTier.CHAOS_TIER, 1, 5.0f, properties.rarity(ModRarity.CHAOS).fireResistant().stacksTo(1));
+    public ItemChaosPickaxe(Properties props) {
+        super(ModToolTier.CHAOS_TIER, -50, 0f, props
+                .stacksTo(1)
+                .fireResistant()
+                .rarity(ModRarity.CHAOS));
     }
 
     @Override
-    public float getDestroySpeed(ItemStack pStack, BlockState pState) {
-        if (pState.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
-        return super.getDestroySpeed(pStack, pState);
-    }
-
-    @Override
-    public boolean isEnchantable(ItemStack pStack) {
+    public boolean isFoil(ItemStack pStack) {
         return true;
     }
 
@@ -42,28 +42,50 @@ public class ItemChaosPickaxe extends PickaxeItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag advancedTooltip) {
-        tooltip.add(Component.translatable("tooltip.reinforcedae.indestructible").withStyle(ChatFormatting.GOLD));
-        super.appendHoverText(stack, level, tooltip, advancedTooltip);
-    }
-
-    @Override
-    public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
-        return true;
-    }
-
-    @Override
-    public boolean isFoil(ItemStack pStack) {
-        return true;
-    }
-
-    @Override
     public int getEnchantmentValue(ItemStack stack) {
-        return 30;
+        return 0;
     }
 
     @Override
-    public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
-        return DIG_ACTION.contains(toolAction);
+    public float getDestroySpeed(@NotNull ItemStack pStack, @NotNull BlockState pState) {
+        if (pState.is(BlockTags.MINEABLE_WITH_PICKAXE)) return 8888.0f;
+        return Math.max(super.getDestroySpeed(pStack, pState), 9999.0f);
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> multimap = HashMultimap.create();
+        if (slot == EquipmentSlot.MAINHAND) {
+            multimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", getTier().getAttackDamageBonus(), AttributeModifier.Operation.ADDITION));
+            multimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", getTier().getSpeed(), AttributeModifier.Operation.ADDITION));
+        }
+        return multimap;
+    }
+
+    @Override
+    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (player.isCrouching()) {
+            if (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0) {
+                clearEnchantments(stack);
+                stack.enchant(Enchantments.BLOCK_FORTUNE, 20);
+                if (!level.isClientSide && player instanceof ServerPlayer sPlayer)
+                    sPlayer.sendSystemMessage(TextComponentHelper.createComponentTranslation(null, "Fortune"), true);
+            } else {
+                clearEnchantments(stack);
+                stack.enchant(Enchantments.SILK_TOUCH, 1);
+                if (!level.isClientSide && player instanceof ServerPlayer sPlayer)
+                    sPlayer.sendSystemMessage(TextComponentHelper.createComponentTranslation(null, "Silk Touch"), true);
+            }
+            player.swing(hand);
+            return InteractionResultHolder.success(stack);
+        }
+        return super.use(level, player, hand);
+    }
+
+    public void clearEnchantments(ItemStack stack) {
+        if (stack.getOrCreateTag().contains("Enchantments", Tag.TAG_LIST)) {
+            stack.getOrCreateTag().remove("Enchantments");
+        }
     }
 }
