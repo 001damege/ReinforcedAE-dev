@@ -1,65 +1,72 @@
 package com.mikazukichandamege.reinforcedae;
 
-import com.mikazukichandamege.reinforcedae.definition.ModCreativeTab;
-import com.mikazukichandamege.reinforcedae.definition.ModItem;
-import com.mikazukichandamege.reinforcedae.integration.appflux.AppFluxItem;
-import com.mikazukichandamege.reinforcedae.integration.ars.ArsItem;
-import com.mikazukichandamege.reinforcedae.integration.botania.BotaniaItem;
-import com.mikazukichandamege.reinforcedae.integration.mekanism.MekanismItem;
-import com.mikazukichandamege.reinforcedae.item.upgrade.InitUpgrades;
-import com.mikazukichandamege.reinforcedae.util.Addon;
+import com.mikazukichandamege.reinforcedae.init.InitBlock;
+import com.mikazukichandamege.reinforcedae.init.InitBlockEntity;
+import com.mikazukichandamege.reinforcedae.init.InitItem;
+import com.mikazukichandamege.reinforcedae.init.internal.InitUpgrade;
+import com.mikazukichandamege.reinforcedae.registry.ModCreativeTab;
 import com.mojang.logging.LogUtils;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 import org.slf4j.Logger;
 
 
 @Mod(ReinforcedAE.MOD_ID)
-public class ReinforcedAE {
-
+public final class ReinforcedAE {
     public static final String MOD_ID = "reinforcedae";
     public static final String MOD_NAME = "ReinforcedAE";
     public static final Logger LOGGER = LogUtils.getLogger();
-
-    public ReinforcedAE() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        ModCreativeTab.init(modEventBus);
-        ModItem.init(modEventBus);
-
-        if (ModList.get().isLoaded(Addon.Mekanism.getModId())) {
-            MekanismItem.init(modEventBus);
-        }
-        if (ModList.get().isLoaded(Addon.Botania.getModId())) {
-            BotaniaItem.init(modEventBus);
-        }
-        if (ModList.get().isLoaded(Addon.Ars.getModId())) {
-            ArsItem.init(modEventBus);
-        }
-        if (ModList.get().isLoaded(Addon.Appflux.getModId())) {
-            AppFluxItem.init(modEventBus);
-        }
-
-        modEventBus.addListener(this::commonSetup);
-    }
-
     public static ResourceLocation makeId(String path) {
         return new ResourceLocation(MOD_ID, path);
     }
 
-    public void commonSetup(final FMLCommonSetupEvent event) {
+    public ReinforcedAE() {
+        this(FMLJavaModLoadingContext.get());
+    }
+
+    public ReinforcedAE(FMLJavaModLoadingContext context) {
+        IEventBus eventBus = context.getModEventBus();
+        MinecraftForge.EVENT_BUS.register(this);
+        eventBus.addListener(ModCreativeTab::initExternal);
+        eventBus.addListener(this::commonSetup);
+
+        eventBus.addListener((RegisterEvent event) -> {
+            if (event.getRegistryKey() == Registries.CREATIVE_MODE_TAB) {
+                registerCreativeTab(event.getVanillaRegistry());
+                return;
+            }
+            if (!event.getRegistryKey().equals(Registries.BLOCK)) {
+                return;
+            }
+
+            InitBlock.register(ForgeRegistries.BLOCKS);
+            InitBlockEntity.register(ForgeRegistries.BLOCK_ENTITY_TYPES);
+            InitItem.register(ForgeRegistries.ITEMS);
+        });
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(this::postRegistrationInitialization).whenComplete((res, err) -> {
             if (err != null) {
-                LOGGER.warn(String.valueOf(err));
+                ReinforcedAE.LOGGER.warn(String.valueOf(err));
             }
         });
     }
 
     public void postRegistrationInitialization() {
-        InitUpgrades.init();
+        InitUpgrade.register();
+    }
+
+    public void registerCreativeTab(Registry<CreativeModeTab> registry) {
+        ModCreativeTab.init(registry);
     }
 }
