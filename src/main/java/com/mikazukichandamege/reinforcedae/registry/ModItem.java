@@ -33,6 +33,7 @@ public final class ModItem {
         return Collections.unmodifiableList(ITEMS);
     }
 
+    public static final ItemDefinition<MaterialItem> REINFORCED_CARD = item("Reinforced Card", "reinforced_card", MaterialItem::new);
     public static final ItemDefinition<Item> SPEED_CARD = item("Compressed Speed Card", "compressed_speed_card", Upgrades::createUpgradeCardItem);
     public static final ItemDefinition<EnergyCardItem> ENERGY_CARD = item("Compressed Energy Card", "compressed_energy_card", p -> new EnergyCardItem(p, 9));
     public static final ItemDefinition<MaterialItem> ITEM_CELL_HOUSING = item("Reinforced Item Cell Housing", "reinforced_item_cell_housing", MaterialItem::new);

@@ -4,9 +4,6 @@ import appeng.core.localization.LocalizationEnum;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
 
 public enum ModTranslation implements LocalizationEnum {
-    SilkTouch("Silk Touch", Type.TOOLTIP),
-    FORTUNE("Fortune", Type.TOOLTIP),
-    INDESTRUCTIBLE("Indestructible", Type.TOOLTIP),
     Mod_Name("Reinforced AE", Type.GUI),
     AcceleratorThreads("Provides 16 co-processing threads per block.", Type.TOOLTIP)
     ;
