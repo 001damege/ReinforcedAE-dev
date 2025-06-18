@@ -6,6 +6,8 @@ import appeng.core.definitions.BlockDefinition;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
 import com.mikazukichandamege.reinforcedae.common.block.ReinforcedCraftingBlockItem;
 import com.mikazukichandamege.reinforcedae.common.block.ReinforcedCraftingUnitType;
+import com.mikazukichandamege.reinforcedae.common.block.ReinforcedInterfaceBlock;
+import com.mikazukichandamege.reinforcedae.common.block.ReinforcedPatternProviderBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
@@ -36,6 +38,8 @@ public final class ModBlock {
     public static final BlockDefinition<CraftingUnitBlock> STORAGE_8192M = block("8192M Crafting Storage", "8192m_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_8192M), () -> ModItem.CELL_COMPONENT_8192M);
     public static final BlockDefinition<CraftingUnitBlock> STORAGE_32768M = block("32768M Crafting Storage", "32768m_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_32768M), () -> ModItem.CELL_COMPONENT_32768M);
     public static final BlockDefinition<CraftingUnitBlock> STORAGE_131072M = block("131072M Crafting Storage", "131072m_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_131072M), () -> ModItem.CELL_COMPONENT_131072M);
+    public static final BlockDefinition<ReinforcedPatternProviderBlock> REINFORCED_PATTERN_PROVIDER = block("Reinforced Pattern Provider", "reinforced_pattern_provider", ReinforcedPatternProviderBlock::new, AEBaseBlockItem::new);
+    public static final BlockDefinition<ReinforcedInterfaceBlock> REINFORCED_INTERFACE = block("Reinforced Interface", "reinforced_interface", ReinforcedInterfaceBlock::new, AEBaseBlockItem::new);
 
     public static <T extends Block> BlockDefinition<T> block(String englishName, String id, Supplier<T> blockSupplier, BiFunction<Block, Item.Properties, BlockItem> factory) {
         var block = blockSupplier.get();

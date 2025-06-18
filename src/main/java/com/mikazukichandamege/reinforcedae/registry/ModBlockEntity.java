@@ -5,6 +5,8 @@ import appeng.blockentity.AEBaseBlockEntity;
 import appeng.blockentity.crafting.CraftingBlockEntity;
 import appeng.core.definitions.BlockDefinition;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
+import com.mikazukichandamege.reinforcedae.common.blockentity.ReinforcedInterfaceBlockEntity;
+import com.mikazukichandamege.reinforcedae.common.blockentity.ReinforcedPatternProviderBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -30,7 +32,8 @@ public final class ModBlockEntity {
 
     public static final BlockEntityType<CraftingBlockEntity> CRAFTING_UNIT = create("reinforced_crafting_unit", CraftingBlockEntity.class, CraftingBlockEntity::new, ModBlock.CRAFTING_UNIT, ModBlock.CRAFTING_ACCELERATOR);
     public static final BlockEntityType<CraftingBlockEntity> CRAFTING_STORAGE = create("reinforced_crafting_storage", CraftingBlockEntity.class, CraftingBlockEntity::new, ModBlock.STORAGE_1024M, ModBlock.STORAGE_2048M, ModBlock.STORAGE_8192M, ModBlock.STORAGE_32768M, ModBlock.STORAGE_131072M);
-
+    public static final BlockEntityType<ReinforcedPatternProviderBlockEntity> REINFORCED_PATTERN_PROVIDER = create("reinforced_pattern_provider", ReinforcedPatternProviderBlockEntity.class, ReinforcedPatternProviderBlockEntity::new, ModBlock.REINFORCED_PATTERN_PROVIDER);
+    public static final BlockEntityType<ReinforcedInterfaceBlockEntity> REINFORCED_INTERFACE = create("reinforced_interface", ReinforcedInterfaceBlockEntity.class, ReinforcedInterfaceBlockEntity::new, ModBlock.REINFORCED_INTERFACE);
 
     @SafeVarargs
     public static <T extends AEBaseBlockEntity> BlockEntityType<T> create(String id, Class<T> entityClass, BlockEntityFactory<T> factory, BlockDefinition<? extends AEBaseEntityBlock<?>>... blockDefinitions) {
