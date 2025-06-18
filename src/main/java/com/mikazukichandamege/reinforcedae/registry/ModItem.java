@@ -14,6 +14,10 @@ import com.mikazukichandamege.reinforcedae.common.item.kit.ItemDriveKit;
 import com.mikazukichandamege.reinforcedae.common.item.kit.ItemIOBusKit;
 import com.mikazukichandamege.reinforcedae.common.item.kit.ItemInterfaceKit;
 import com.mikazukichandamege.reinforcedae.common.item.kit.ItemPatternProviderKit;
+import com.mikazukichandamege.reinforcedae.common.item.part.ReinforcedInterfacePart;
+import com.mikazukichandamege.reinforcedae.common.item.part.ReinforcedPatternProviderPart;
+import com.mikazukichandamege.reinforcedae.common.item.part.ReinforcedPatternProviderPartItem;
+import net.minecraft.Util;
 import net.minecraft.world.item.Item;
 
 import java.util.ArrayList;
@@ -50,6 +54,12 @@ public final class ModItem {
     public static final ItemDefinition<MaterialItem> CELL_COMPONENT_32768M = item("32768M Reinforced Storage Component", "cell_component_32768m", MaterialItem::new);
     public static final ItemDefinition<MaterialItem> CELL_COMPONENT_131072M = item("131072M Reinforced Storage Component", "cell_component_131072m", MaterialItem::new);
     public static final ItemDefinition<MaterialItem> CELL_COMPONENT_CREATIVE = item("Creative Storage Component", "cell_component_creative", MaterialItem::new);
+
+    public static final ItemDefinition<PartItem<ReinforcedInterfacePart>> REINFORCED_INTERFACE = part("Reinforced Interface", "cable_reinforced_interface", ReinforcedInterfacePart.class, ReinforcedInterfacePart::new);
+    public static final ItemDefinition<ReinforcedPatternProviderPartItem> REINFORCED_PATTERN_PROVIDER = Util.make(() -> {
+        PartModels.registerModels(PartModelsHelper.createModels(ReinforcedPatternProviderPart.class));
+        return item("Reinforced Pattern Provider", "cable_reinforced_pattern_provider", ReinforcedPatternProviderPartItem::new);
+    });
 
     public static <T extends Item> ItemDefinition<T> item(String englishName, String id, Function<Item.Properties, T> factory) {
         var registry = new ItemDefinition<>(englishName, ReinforcedAE.makeId(id), factory.apply(new Item.Properties()));
