@@ -1,6 +1,9 @@
 package com.mikazukichandamege.reinforcedae.common.block;
 
 import appeng.block.crafting.CraftingBlockItem;
+import appeng.core.AEConfig;
+import appeng.util.InteractionUtil;
+import com.mikazukichandamege.reinforcedae.registry.ModBlock;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -21,6 +24,13 @@ public class ReinforcedCraftingBlockItem extends CraftingBlockItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (AEConfig.instance().isDisassemblyCraftingEnabled() && InteractionUtil.isInAlternateUseMode(player)) {
+            int itemCount = player.getItemInHand(hand).getCount();
+            player.setItemInHand(hand, ItemStack.EMPTY);
+            player.getInventory().placeItemBackInInventory(ModBlock.CRAFTING_UNIT.stack(itemCount));
+            player.getInventory().placeItemBackInInventory(new ItemStack(disassemblyExtra.get(), itemCount));
+            return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide());
+        }
         return super.use(level, player, hand);
     }
 
