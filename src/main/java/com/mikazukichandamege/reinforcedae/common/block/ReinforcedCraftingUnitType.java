@@ -45,11 +45,11 @@ public enum ReinforcedCraftingUnitType implements ICraftingUnitType {
 
     public BlockDefinition<?> getDefinition() {
         return switch (this) {
-            case STORAGE_1024M -> ModBlock.STORAGE_1024M;
-            case STORAGE_2048M -> ModBlock.STORAGE_2048M;
-            case STORAGE_8192M -> ModBlock.STORAGE_8192M;
-            case STORAGE_32768M -> ModBlock.STORAGE_32768M;
-            case STORAGE_131072M -> ModBlock.STORAGE_131072M;
+            case STORAGE_1024M -> ModBlock.STORAGE_1G;
+            case STORAGE_2048M -> ModBlock.STORAGE_2G;
+            case STORAGE_8192M -> ModBlock.STORAGE_8G;
+            case STORAGE_32768M -> ModBlock.STORAGE_32G;
+            case STORAGE_131072M -> ModBlock.STORAGE_128G;
             case UNIT -> ModBlock.CRAFTING_UNIT;
             case ACCELERATOR -> ModBlock.CRAFTING_ACCELERATOR;
         };

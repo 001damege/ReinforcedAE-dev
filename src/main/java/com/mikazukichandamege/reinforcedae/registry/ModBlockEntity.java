@@ -31,7 +31,7 @@ public final class ModBlockEntity {
     }
 
     public static final BlockEntityType<CraftingBlockEntity> CRAFTING_UNIT = create("reinforced_crafting_unit", CraftingBlockEntity.class, CraftingBlockEntity::new, ModBlock.CRAFTING_UNIT, ModBlock.CRAFTING_ACCELERATOR);
-    public static final BlockEntityType<CraftingBlockEntity> CRAFTING_STORAGE = create("reinforced_crafting_storage", CraftingBlockEntity.class, CraftingBlockEntity::new, ModBlock.STORAGE_1024M, ModBlock.STORAGE_2048M, ModBlock.STORAGE_8192M, ModBlock.STORAGE_32768M, ModBlock.STORAGE_131072M);
+    public static final BlockEntityType<CraftingBlockEntity> CRAFTING_STORAGE = create("reinforced_crafting_storage", CraftingBlockEntity.class, CraftingBlockEntity::new, ModBlock.STORAGE_1G, ModBlock.STORAGE_2G, ModBlock.STORAGE_8G, ModBlock.STORAGE_32G, ModBlock.STORAGE_128G);
     public static final BlockEntityType<ReinforcedPatternProviderBlockEntity> REINFORCED_PATTERN_PROVIDER = create("reinforced_pattern_provider", ReinforcedPatternProviderBlockEntity.class, ReinforcedPatternProviderBlockEntity::new, ModBlock.REINFORCED_PATTERN_PROVIDER);
     public static final BlockEntityType<ReinforcedInterfaceBlockEntity> REINFORCED_INTERFACE = create("reinforced_interface", ReinforcedInterfaceBlockEntity.class, ReinforcedInterfaceBlockEntity::new, ModBlock.REINFORCED_INTERFACE);
 

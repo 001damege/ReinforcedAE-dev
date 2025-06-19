@@ -33,11 +33,11 @@ public final class ModBlock {
 
     public static final BlockDefinition<CraftingUnitBlock> CRAFTING_UNIT = block("Reinforced Crafting Unit", "reinforced_crafting_unit", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.UNIT), AEBaseBlockItem::new);
     public static final BlockDefinition<CraftingUnitBlock> CRAFTING_ACCELERATOR = block("Reinforced Crafting Co-Processing Unit", "reinforced_crafting_accelerator", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.ACCELERATOR), () -> ModItem.OPTICS_PROCESSOR);
-    public static final BlockDefinition<CraftingUnitBlock> STORAGE_1024M = block("1024M Crafting Storage", "1024m_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_1024M), () -> ModItem.CELL_COMPONENT_1024M);
-    public static final BlockDefinition<CraftingUnitBlock> STORAGE_2048M = block("2048M Crafting Storage", "2048m_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_2048M), () -> ModItem.CELL_COMPONENT_2048M);
-    public static final BlockDefinition<CraftingUnitBlock> STORAGE_8192M = block("8192M Crafting Storage", "8192m_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_8192M), () -> ModItem.CELL_COMPONENT_8192M);
-    public static final BlockDefinition<CraftingUnitBlock> STORAGE_32768M = block("32768M Crafting Storage", "32768m_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_32768M), () -> ModItem.CELL_COMPONENT_32768M);
-    public static final BlockDefinition<CraftingUnitBlock> STORAGE_131072M = block("131072M Crafting Storage", "131072m_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_131072M), () -> ModItem.CELL_COMPONENT_131072M);
+    public static final BlockDefinition<CraftingUnitBlock> STORAGE_1G = block("1G Crafting Storage", "1g_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_1024M), () -> ModItem.CELL_COMPONENT_1G);
+    public static final BlockDefinition<CraftingUnitBlock> STORAGE_2G = block("2G Crafting Storage", "2g_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_2048M), () -> ModItem.CELL_COMPONENT_2G);
+    public static final BlockDefinition<CraftingUnitBlock> STORAGE_8G = block("8G Crafting Storage", "8g_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_8192M), () -> ModItem.CELL_COMPONENT_8G);
+    public static final BlockDefinition<CraftingUnitBlock> STORAGE_32G = block("32G Crafting Storage", "32g_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_32768M), () -> ModItem.CELL_COMPONENT_32G);
+    public static final BlockDefinition<CraftingUnitBlock> STORAGE_128G = block("128G Crafting Storage", "128g_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_131072M), () -> ModItem.CELL_COMPONENT_128G);
     public static final BlockDefinition<ReinforcedPatternProviderBlock> REINFORCED_PATTERN_PROVIDER = block("Reinforced Pattern Provider", "reinforced_pattern_provider", ReinforcedPatternProviderBlock::new, AEBaseBlockItem::new);
     public static final BlockDefinition<ReinforcedInterfaceBlock> REINFORCED_INTERFACE = block("Reinforced Interface", "reinforced_interface", ReinforcedInterfaceBlock::new, AEBaseBlockItem::new);
 
