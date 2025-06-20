@@ -7,6 +7,7 @@ import appeng.menu.ISubMenu;
 import appeng.menu.MenuOpener;
 import appeng.menu.locator.MenuLocator;
 import com.mikazukichandamege.reinforcedae.common.block.ReinforcedPatternProviderBlock;
+import com.mikazukichandamege.reinforcedae.registry.ModBlock;
 import com.mikazukichandamege.reinforcedae.registry.ModContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
@@ -36,11 +37,11 @@ public class ReinforcedPatternProviderBlockEntity extends PatternProviderBlockEn
 
     @Override
     public AEItemKey getTerminalIcon() {
-        return super.getTerminalIcon();
+        return AEItemKey.of(ModBlock.REINFORCED_PATTERN_PROVIDER.stack());
     }
 
     @Override
     public ItemStack getMainMenuIcon() {
-        return super.getMainMenuIcon();
+        return ModBlock.REINFORCED_PATTERN_PROVIDER.stack();
     }
 }
