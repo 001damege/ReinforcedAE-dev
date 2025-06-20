@@ -49,7 +49,7 @@ public class ItemInterfaceKit extends ItemKitBase {
                         if (state.hasProperty(pt)) {
                             state = state.<Comparable, Comparable> setValue((Property) pt, va);
                         }
-                    } catch (Exception e) {
+                    } catch (Exception ignored) {
 
                     }
                 }
