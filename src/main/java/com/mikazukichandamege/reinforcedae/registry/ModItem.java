@@ -39,7 +39,7 @@ public final class ModItem {
     }
 
     public static final ItemDefinition<MaterialItem> REINFORCED_CARD = item("Reinforced Card", "reinforced_card", MaterialItem::new);
-    public static final ItemDefinition<Item> SPEED_CARD = item("Compressed Speed Card", "compressed_speed_card", Upgrades::createUpgradeCardItem);
+    public static final ItemDefinition<Item> SPEED_CARD = item("Compressed Accelerator Card", "compressed_speed_card", Upgrades::createUpgradeCardItem);
     public static final ItemDefinition<EnergyCardItem> ENERGY_CARD = item("Compressed Energy Card", "compressed_energy_card", p -> new EnergyCardItem(p, 9));
     public static final ItemDefinition<MaterialItem> ITEM_CELL_HOUSING = item("Reinforced Item Cell Housing", "reinforced_item_cell_housing", MaterialItem::new);
     public static final ItemDefinition<MaterialItem> FLUID_CELL_HOUSING = item("Reinforced Fluid Cell Housing", "reinforced_fluid_cell_housing", MaterialItem::new);
@@ -62,10 +62,12 @@ public final class ModItem {
         PartModels.registerModels(PartModelsHelper.createModels(ReinforcedPatternProviderPart.class));
         return item("Reinforced Pattern Provider", "cable_reinforced_pattern_provider", ReinforcedPatternProviderPartItem::new);
     });
+/*
 
     public static final ItemDefinition<DISKDrive> DISK_DRIVE_1G = item("1G Disk Drive", "1g_disk_drive", p -> new DISKDrive(CELL_COMPONENT_1G, (int) 1024L * 1024, 5.5f));
     public static final ItemDefinition<DISKDrive> DISK_DRIVE_2G = item("2G Disk Drive", "2g_disk_drive", p -> new DISKDrive(CELL_COMPONENT_2G, (int) 1024L * 2048, 6.0f));
 
+ */
     public static <T extends Item> ItemDefinition<T> item(String englishName, String id, Function<Item.Properties, T> factory) {
         var registry = new ItemDefinition<>(englishName, ReinforcedAE.makeId(id), factory.apply(new Item.Properties()));
         ITEMS.add(registry);
