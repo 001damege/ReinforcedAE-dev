@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.mikazukichandamege.reinforcedae.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "reinforcedae.refmap.json",
+  "mixins": [
+    "MixinBasicCellInventory",
+    "MixinInscriberBlockEntity"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
