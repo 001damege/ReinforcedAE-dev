@@ -4,6 +4,7 @@ import appeng.block.crafting.CraftingBlockItem;
 import appeng.core.AEConfig;
 import appeng.util.InteractionUtil;
 import com.mikazukichandamege.reinforcedae.registry.ModBlock;
+import com.mikazukichandamege.reinforcedae.registry.ModTranslation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -35,7 +36,9 @@ public class ReinforcedCraftingBlockItem extends CraftingBlockItem {
     }
 
     @Override
-    public void addCheckedInformation(ItemStack itemStack, Level level, List<Component> toolTip, TooltipFlag advancedTooltips) {
-
+    public void addCheckedInformation(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag advancedTooltips) {
+        if (this.getBlock().equals(ModBlock.CRAFTING_ACCELERATOR.block())) {
+            tooltip.add(ModTranslation.AcceleratorThreads.text());
+        }
     }
 }
