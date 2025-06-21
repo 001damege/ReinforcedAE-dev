@@ -35,6 +35,9 @@ public final class InitUpgrade {
         Upgrades.add(ModItem.SPEED_CARD, AEBlocks.VIBRATION_CHAMBER, 3);
         Upgrades.add(ModItem.ENERGY_CARD, AEBlocks.VIBRATION_CHAMBER, 3);
         Upgrades.add(ModItem.SPEED_CARD, AEBlocks.INSCRIBER, 4);
+        Upgrades.add(ModItem.ENERGY_CARD, ModItem.QUANTUM_TOOL, 2);
+        Upgrades.add(ModItem.ATTACK_AMPLIFICATION_CARD, ModItem.QUANTUM_TOOL, 2);
+        Upgrades.add(ModItem.ATTACK_SPEED_CARD, ModItem.QUANTUM_TOOL, 2);
 
         for (var portableCell : List.of(
                 AEItems.PORTABLE_ITEM_CELL1K,
