@@ -14,7 +14,8 @@ public enum ReinforcedCraftingUnitType implements ICraftingUnitType {
     STORAGE_32768M(32768, "32768m_storage"),
     STORAGE_131072M(131072, "131072m_storage"),
     UNIT(0, "unit"),
-    ACCELERATOR(0, "accelerator");
+    ACCELERATOR(0, "accelerator"),
+    MONITOR(0, "monitor");
 
     private final int storageMb;
     private final String affix;
@@ -52,6 +53,7 @@ public enum ReinforcedCraftingUnitType implements ICraftingUnitType {
             case STORAGE_131072M -> ModBlock.STORAGE_128G;
             case UNIT -> ModBlock.CRAFTING_UNIT;
             case ACCELERATOR -> ModBlock.CRAFTING_ACCELERATOR;
+            case MONITOR -> ModBlock.CRAFTING_MONITOR;
         };
     }
 }

@@ -14,6 +14,7 @@ import net.minecraft.data.models.blockstates.PropertyDispatch;
 import net.minecraft.data.models.blockstates.Variant;
 import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
@@ -33,6 +34,7 @@ public class ModBlockModelProvider extends AE2BlockStateProvider {
         var inscriberModel = models().getExistingFile(ReinforcedAE.makeId("inscriber"));
 
         patternProvider();
+        craftingMonitor();
 
         builtInBlockModel("crafting/1g_storage_formed");
         builtInBlockModel("crafting/2g_storage_formed");
@@ -55,12 +57,18 @@ public class ModBlockModelProvider extends AE2BlockStateProvider {
         energyCell(ModBlock.PERFECT_ENERGY_CELL, "block/perfect_energy_cell");
         energyCell(ModBlock.QUANTUM_ENERGY_CELL, "block/quantum_energy_cell");
 
-
     }
 
     private void craftingMonitor() {
         var formedModel = ReinforcedAE.makeId("block/crafting/monitor_formed");
         var unformedModel = ReinforcedAE.makeId("block/crafting/monitor");
+        multiVariantGenerator(ModBlock.CRAFTING_MONITOR).with(PropertyDispatch.properties(AbstractCraftingUnitBlock.FORMED, BlockStateProperties.FACING)
+                .generate((formed, facing) -> {
+                    if (formed) {
+                        return Variant.variant().with(VariantProperties.MODEL, formedModel);
+                    } else {
+                        return applyOrientation(Variant.variant().with(VariantProperties.MODEL, unformedModel), BlockOrientation.get(facing));
+                    }}));
     }
 
     private void patternProvider() {

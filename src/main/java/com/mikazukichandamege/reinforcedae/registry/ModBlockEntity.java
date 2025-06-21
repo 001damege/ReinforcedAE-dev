@@ -3,6 +3,7 @@ package com.mikazukichandamege.reinforcedae.registry;
 import appeng.block.AEBaseEntityBlock;
 import appeng.blockentity.AEBaseBlockEntity;
 import appeng.blockentity.crafting.CraftingBlockEntity;
+import appeng.blockentity.crafting.CraftingMonitorBlockEntity;
 import appeng.blockentity.networking.EnergyCellBlockEntity;
 import appeng.core.definitions.BlockDefinition;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
@@ -35,6 +36,7 @@ public final class ModBlockEntity {
     public static final BlockEntityType<CraftingBlockEntity> CRAFTING_STORAGE = create("reinforced_crafting_storage", CraftingBlockEntity.class, CraftingBlockEntity::new, ModBlock.STORAGE_1G, ModBlock.STORAGE_2G, ModBlock.STORAGE_8G, ModBlock.STORAGE_32G, ModBlock.STORAGE_128G);
     public static final BlockEntityType<ReinforcedPatternProviderBlockEntity> REINFORCED_PATTERN_PROVIDER = create("reinforced_pattern_provider", ReinforcedPatternProviderBlockEntity.class, ReinforcedPatternProviderBlockEntity::new, ModBlock.REINFORCED_PATTERN_PROVIDER);
     public static final BlockEntityType<ReinforcedInterfaceBlockEntity> REINFORCED_INTERFACE = create("reinforced_interface", ReinforcedInterfaceBlockEntity.class, ReinforcedInterfaceBlockEntity::new, ModBlock.REINFORCED_INTERFACE);
+    public static final BlockEntityType<CraftingMonitorBlockEntity> REINFORCED_CRAFTING_MONITOR = create("reinforced_monitor", CraftingMonitorBlockEntity.class, CraftingMonitorBlockEntity::new, ModBlock.CRAFTING_MONITOR);
     public static final BlockEntityType<EnergyCellBlockEntity> IMPROVED_ENERGY_CELL = create("improved_energy_cell", EnergyCellBlockEntity.class, EnergyCellBlockEntity::new, ModBlock.IMPROVED_ENERGY_CELL);
     public static final BlockEntityType<EnergyCellBlockEntity> ADVANCED_ENERGY_CELL = create("advanced_energy_cell", EnergyCellBlockEntity.class, EnergyCellBlockEntity::new, ModBlock.ADVANCED_ENERGY_CELL);
     public static final BlockEntityType<EnergyCellBlockEntity> PERFECT_ENERGY_CELL = create("perfect_energy_cell", EnergyCellBlockEntity.class, EnergyCellBlockEntity::new, ModBlock.PERFECT_ENERGY_CELL);

@@ -1,9 +1,11 @@
 package com.mikazukichandamege.reinforcedae.registry;
 
 import appeng.block.AEBaseBlockItem;
+import appeng.block.crafting.CraftingMonitorBlock;
 import appeng.block.crafting.CraftingUnitBlock;
 import appeng.block.networking.EnergyCellBlock;
 import appeng.block.networking.EnergyCellBlockItem;
+import appeng.core.definitions.AEParts;
 import appeng.core.definitions.BlockDefinition;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
 import com.mikazukichandamege.reinforcedae.common.block.ReinforcedCraftingBlockItem;
@@ -42,6 +44,7 @@ public final class ModBlock {
     public static final BlockDefinition<CraftingUnitBlock> STORAGE_128G = block("128G Crafting Storage", "128g_crafting_storage", () -> new CraftingUnitBlock(ReinforcedCraftingUnitType.STORAGE_131072M), () -> ModItem.CELL_COMPONENT_128G);
     public static final BlockDefinition<ReinforcedPatternProviderBlock> REINFORCED_PATTERN_PROVIDER = block("Reinforced Pattern Provider", "reinforced_pattern_provider", ReinforcedPatternProviderBlock::new, AEBaseBlockItem::new);
     public static final BlockDefinition<ReinforcedInterfaceBlock> REINFORCED_INTERFACE = block("Reinforced Interface", "reinforced_interface", ReinforcedInterfaceBlock::new, AEBaseBlockItem::new);
+    public static final BlockDefinition<CraftingMonitorBlock> CRAFTING_MONITOR = block("Reinforced Crafting Monitor", "reinforced_crafting_monitor", () -> new CraftingMonitorBlock(ReinforcedCraftingUnitType.MONITOR), () -> AEParts.STORAGE_MONITOR);
     public static final BlockDefinition<EnergyCellBlock> IMPROVED_ENERGY_CELL = block("Improved Energy Cell", "improved_energy_cell", () -> new EnergyCellBlock(16777216, 3200, 12800), EnergyCellBlockItem::new);
     public static final BlockDefinition<EnergyCellBlock> ADVANCED_ENERGY_CELL = block("Advanced Energy Cell", "advanced_energy_cell", () -> new EnergyCellBlock(115343360, 3200, 12800), EnergyCellBlockItem::new);
     public static final BlockDefinition<EnergyCellBlock> PERFECT_ENERGY_CELL = block("Perfect Energy Cell", "perfect_energy_cell", () -> new EnergyCellBlock(805306368, 3200, 12800), EnergyCellBlockItem::new);
