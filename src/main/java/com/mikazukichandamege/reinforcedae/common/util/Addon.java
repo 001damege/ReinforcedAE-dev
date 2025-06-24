@@ -7,7 +7,8 @@ public enum Addon {
     Ars("ars_nouveau"),
     ExtendedAE("expatternprovider"),
     AdvancedAE("advanced_ae"),
-    Avaritia("avaritia");
+    Avaritia("avaritia"),
+    MEGACells("megacells");
 
     private final String modId;
 

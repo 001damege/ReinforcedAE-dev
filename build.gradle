@@ -116,6 +116,7 @@ dependencies {
     implementation fg.deobf("curse.maven:applied-botanics-addon-610632:4904185") // Applied Botanics Addon
     implementation fg.deobf("curse.maven:applied-mekanistics-574300:4842281") // Applied Mekanistics
     implementation fg.deobf("curse.maven:ae2-things-forge-609977:4616683") // AE2 Things
+    runtimeOnly fg.deobf("curse.maven:ae2-crafting-tree-1086241:6318810") // AE2 Crafting Tree
 
     // Mekanism
     implementation fg.deobf("curse.maven:mekanism-268560:6258796") // Mekanism

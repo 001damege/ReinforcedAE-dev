@@ -8,8 +8,10 @@ import appeng.datagen.providers.tags.ConventionTags;
 import appeng.recipes.handlers.InscriberProcessType;
 import appeng.recipes.handlers.InscriberRecipeBuilder;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
+import com.mikazukichandamege.reinforcedae.common.util.Addon;
 import com.mikazukichandamege.reinforcedae.registry.ModBlock;
 import com.mikazukichandamege.reinforcedae.registry.ModItem;
+import gripe._90.megacells.definition.MEGAItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -18,11 +20,13 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
+import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-public class RAERecipeProvider extends RecipeProvider {
+public class RAERecipeProvider extends RecipeProvider implements IConditionBuilder {
     protected RAERecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
         super(output);
     }
@@ -237,5 +241,16 @@ public class RAERecipeProvider extends RecipeProvider {
                 .define('B', ModItem.OPTICS_PROCESSOR)
                 .unlockedBy("hasItem", has(ModBlock.PERFECT_ENERGY_CELL))
                 .save(save, ReinforcedAE.makeId(ModBlock.QUANTUM_ENERGY_CELL.id().getPath()));
+        ConditionalRecipe.builder().addCondition(modLoaded(Addon.MEGACells.getModId())).addRecipe(
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CELL_COMPONENT_1G, 1)
+                        .pattern("ABA")
+                        .pattern("DCD")
+                        .pattern("ADA")
+                        .define('A', AEItems.SKY_DUST)
+                        .define('B', ModItem.OPTICS_PROCESSOR)
+                        .define('C', AEItems.SINGULARITY)
+                        .define('D', MEGAItems.CELL_COMPONENT_256M)
+                        .unlockedBy("hasItem", has(AEItems.CELL_COMPONENT_256K))::save)
+                .build(save, ReinforcedAE.makeId("megacells/" + ModItem.CELL_COMPONENT_1G.id().getPath()));
     }
 }

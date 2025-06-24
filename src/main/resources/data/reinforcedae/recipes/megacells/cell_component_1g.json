@@ -1,0 +1,40 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "megacells"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "key": {
+          "A": {
+            "item": "ae2:sky_dust"
+          },
+          "B": {
+            "item": "reinforcedae:optics_processor"
+          },
+          "C": {
+            "item": "ae2:singularity"
+          },
+          "D": {
+            "item": "megacells:cell_component_256m"
+          }
+        },
+        "pattern": [
+          "ABA",
+          "DCD",
+          "ADA"
+        ],
+        "result": {
+          "item": "reinforcedae:cell_component_1g"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}
