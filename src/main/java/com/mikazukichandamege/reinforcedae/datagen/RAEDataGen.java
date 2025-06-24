@@ -15,9 +15,11 @@ public class RAEDataGen {
         var existing = event.getExistingFileHelper();
         var lookup = event.getLookupProvider();
         var localization = new RAELocalizationProvider(output);
+        var blockTag = new RAETagProvider.RAEBlockTagProvider(output, lookup, existing);
 
         generator.addProvider(event.includeServer(), new RAERecipeProvider(output, lookup));
         generator.addProvider(event.includeServer(), new RAELootTableProvider(output));
+        generator.addProvider(event.includeServer(), blockTag);
 
         generator.addProvider(event.includeClient(), localization);
     }
