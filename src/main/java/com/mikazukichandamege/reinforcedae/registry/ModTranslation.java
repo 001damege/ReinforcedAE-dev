@@ -5,7 +5,15 @@ import com.mikazukichandamege.reinforcedae.ReinforcedAE;
 
 public enum ModTranslation implements LocalizationEnum {
     Mod_Name("Reinforced AE", Type.GUI),
-    AcceleratorThreads("Provides 16 co-processing threads per block.", Type.TOOLTIP)
+    Threads_4x("Provides 4 co-processing threads per block.", Type.TOOLTIP),
+    Threads_16x("Provides 16 co-processing threads per block.", Type.TOOLTIP),
+    Threads_32x("Provides 32 co-processing threads per block.", Type.TOOLTIP),
+    Threads_64x("Provides 64 co-processing threads per block.", Type.TOOLTIP),
+    Threads_128x("Provides 128 co-processing threads per block.", Type.TOOLTIP),
+    Threads_256x("Provides 256 co-processing threads per block.", Type.TOOLTIP),
+    Threads_1024x("Provides 1024 co-processing threads per block.", Type.TOOLTIP),
+    Threads_2048x("Provides 2048 co-processing threads per block.", Type.TOOLTIP),
+    Threads_8192x("Provides 8192 co-processing threads per block.", Type.TOOLTIP),
     ;
 
     private final String englishText;

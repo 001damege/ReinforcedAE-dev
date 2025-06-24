@@ -5,8 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "reinforcedae.refmap.json",
   "mixins": [
-    "MixinBasicCellInventory",
-    "MixinInscriberBlockEntity"
+    "MixinCraftingCPUCluster"
   ],
   "client": [
   ],

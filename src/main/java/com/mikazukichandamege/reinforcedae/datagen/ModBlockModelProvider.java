@@ -44,7 +44,15 @@ public class ModBlockModelProvider extends AE2BlockStateProvider {
 
         simpleBlockAndItem(ModBlock.REINFORCED_INTERFACE);
 
-        craftingModel(ModBlock.CRAFTING_ACCELERATOR, "accelerator");
+        craftingModel(ModBlock.ACCELERATOR_4X, "accelerator_4x");
+        craftingModel(ModBlock.ACCELERATOR_16X, "accelerator_16x");
+        craftingModel(ModBlock.ACCELERATOR_32X, "accelerator_32x");
+        craftingModel(ModBlock.ACCELERATOR_64X, "accelerator_64x");
+        craftingModel(ModBlock.ACCELERATOR_128X, "accelerator_128x");
+        craftingModel(ModBlock.ACCELERATOR_256X, "accelerator_256x");
+        craftingModel(ModBlock.ACCELERATOR_1024X, "accelerator_1024x");
+        craftingModel(ModBlock.ACCELERATOR_2048X, "accelerator_2048x");
+        craftingModel(ModBlock.ACCELERATOR_8192X, "accelerator_8192x");
         craftingModel(ModBlock.CRAFTING_UNIT, "unit");
         craftingModel(ModBlock.STORAGE_1G, "1g_storage");
         craftingModel(ModBlock.STORAGE_2G, "2g_storage");

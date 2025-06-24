@@ -32,8 +32,25 @@ public final class ModBlockEntity {
         return Collections.unmodifiableMap(BLOCK_ENTITY_TYPES);
     }
 
-    public static final BlockEntityType<CraftingBlockEntity> CRAFTING_UNIT = create("reinforced_crafting_unit", CraftingBlockEntity.class, CraftingBlockEntity::new, ModBlock.CRAFTING_UNIT, ModBlock.CRAFTING_ACCELERATOR);
-    public static final BlockEntityType<CraftingBlockEntity> CRAFTING_STORAGE = create("reinforced_crafting_storage", CraftingBlockEntity.class, CraftingBlockEntity::new, ModBlock.STORAGE_1G, ModBlock.STORAGE_2G, ModBlock.STORAGE_8G, ModBlock.STORAGE_32G, ModBlock.STORAGE_128G);
+    public static final BlockEntityType<CraftingBlockEntity> CRAFTING_UNIT = create(
+            "reinforced_crafting_unit", CraftingBlockEntity.class, CraftingBlockEntity::new,
+            ModBlock.CRAFTING_UNIT,
+            ModBlock.ACCELERATOR_4X,
+            ModBlock.ACCELERATOR_16X,
+            ModBlock.ACCELERATOR_32X,
+            ModBlock.ACCELERATOR_64X,
+            ModBlock.ACCELERATOR_128X,
+            ModBlock.ACCELERATOR_256X,
+            ModBlock.ACCELERATOR_1024X,
+            ModBlock.ACCELERATOR_2048X,
+            ModBlock.ACCELERATOR_8192X);
+    public static final BlockEntityType<CraftingBlockEntity> CRAFTING_STORAGE = create(
+            "reinforced_crafting_storage", CraftingBlockEntity.class, CraftingBlockEntity::new,
+            ModBlock.STORAGE_1G,
+            ModBlock.STORAGE_2G,
+            ModBlock.STORAGE_8G,
+            ModBlock.STORAGE_32G,
+            ModBlock.STORAGE_128G);
     public static final BlockEntityType<ReinforcedPatternProviderBlockEntity> REINFORCED_PATTERN_PROVIDER = create("reinforced_pattern_provider", ReinforcedPatternProviderBlockEntity.class, ReinforcedPatternProviderBlockEntity::new, ModBlock.REINFORCED_PATTERN_PROVIDER);
     public static final BlockEntityType<ReinforcedInterfaceBlockEntity> REINFORCED_INTERFACE = create("reinforced_interface", ReinforcedInterfaceBlockEntity.class, ReinforcedInterfaceBlockEntity::new, ModBlock.REINFORCED_INTERFACE);
     public static final BlockEntityType<CraftingMonitorBlockEntity> REINFORCED_CRAFTING_MONITOR = create("reinforced_monitor", CraftingMonitorBlockEntity.class, CraftingMonitorBlockEntity::new, ModBlock.CRAFTING_MONITOR);

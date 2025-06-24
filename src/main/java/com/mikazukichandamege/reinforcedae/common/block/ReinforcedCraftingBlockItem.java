@@ -37,8 +37,24 @@ public class ReinforcedCraftingBlockItem extends CraftingBlockItem {
 
     @Override
     public void addCheckedInformation(ItemStack itemStack, Level level, List<Component> tooltip, TooltipFlag advancedTooltips) {
-        if (this.getBlock().equals(ModBlock.CRAFTING_ACCELERATOR.block())) {
-            tooltip.add(ModTranslation.AcceleratorThreads.text());
+        if (this.getBlock().equals(ModBlock.ACCELERATOR_4X.block())) {
+            tooltip.add(ModTranslation.Threads_4x.text());
+        } else if (this.getBlock().equals(ModBlock.ACCELERATOR_16X.block())) {
+            tooltip.add(ModTranslation.Threads_16x.text());
+        } else if (this.getBlock().equals(ModBlock.ACCELERATOR_32X.block())) {
+            tooltip.add(ModTranslation.Threads_32x.text());
+        } else if (this.getBlock().equals(ModBlock.ACCELERATOR_64X.block())) {
+            tooltip.add(ModTranslation.Threads_64x.text());
+        } else if (this.getBlock().equals(ModBlock.ACCELERATOR_128X.block())) {
+            tooltip.add(ModTranslation.Threads_128x.text());
+        } else if (this.getBlock().equals(ModBlock.ACCELERATOR_256X.block())) {
+            tooltip.add(ModTranslation.Threads_256x.text());
+        } else if (this.getBlock().equals(ModBlock.ACCELERATOR_1024X.block())) {
+            tooltip.add(ModTranslation.Threads_1024x.text());
+        } else if (this.getBlock().equals(ModBlock.ACCELERATOR_2048X.block())) {
+            tooltip.add(ModTranslation.Threads_2048x.text());
+        } else if (this.getBlock().equals(ModBlock.ACCELERATOR_8192X.block())) {
+            tooltip.add(ModTranslation.Threads_8192x.text());
         }
     }
 }
