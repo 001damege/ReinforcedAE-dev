@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "reinforcedae:optics_processor"
+    },
+    "B": {
+      "item": "ae2:speed_card"
+    },
+    "C": {
+      "item": "ae2:singularity"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "item": "reinforcedae:compressed_speed_card"
+  },
+  "show_notification": true
+}

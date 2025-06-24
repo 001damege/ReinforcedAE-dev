@@ -1,0 +1,18 @@
+{
+  "type": "ae2:inscriber",
+  "ingredients": {
+    "bottom": {
+      "item": "ae2:engineering_processor"
+    },
+    "middle": {
+      "item": "ae2:singularity"
+    },
+    "top": {
+      "item": "ae2:logic_processor"
+    }
+  },
+  "mode": "press",
+  "result": {
+    "item": "reinforcedae:optics_processor"
+  }
+}

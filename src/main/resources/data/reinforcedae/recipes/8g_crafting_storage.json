@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "reinforcedae:reinforced_crafting_unit"
+    },
+    "B": {
+      "item": "reinforcedae:cell_component_8g"
+    }
+  },
+  "pattern": [
+    "AB"
+  ],
+  "result": {
+    "item": "reinforcedae:8g_crafting_storage"
+  },
+  "show_notification": true
+}

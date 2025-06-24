@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "forge:gems/diamond"
+    },
+    "B": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "C": {
+      "tag": "forge:dusts/redstone"
+    },
+    "D": {
+      "item": "reinforcedae:optics_processor"
+    }
+  },
+  "pattern": [
+    "AB ",
+    "CDB",
+    "AB "
+  ],
+  "result": {
+    "count": 2,
+    "item": "reinforcedae:reinforced_card"
+  },
+  "show_notification": true
+}

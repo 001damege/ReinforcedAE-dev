@@ -29,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
 public class ReinforcedPatternProviderBlock extends AEBaseEntityBlock<ReinforcedPatternProviderBlockEntity> {
-    private static final EnumProperty<PushDirection> FACING = PatternProviderBlock.PUSH_DIRECTION;
+    public static final EnumProperty<PushDirection> FACING = EnumProperty.create("push_direction", PushDirection.class);
 
     public ReinforcedPatternProviderBlock() {
         super(metalProps());

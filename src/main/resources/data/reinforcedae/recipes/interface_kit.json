@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "ae2:singularity"
+    },
+    "B": {
+      "tag": "forge:dusts/redstone"
+    },
+    "C": {
+      "item": "ae2:sky_dust"
+    },
+    "D": {
+      "item": "reinforcedae:optics_processor"
+    }
+  },
+  "pattern": [
+    "AB",
+    "CD"
+  ],
+  "result": {
+    "item": "reinforcedae:interface_kit"
+  },
+  "show_notification": true
+}
