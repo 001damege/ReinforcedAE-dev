@@ -17,6 +17,7 @@ public class RAEDataGen {
         var localization = new RAELocalizationProvider(output);
 
         generator.addProvider(event.includeServer(), new RAERecipeProvider(output, lookup));
+        generator.addProvider(event.includeServer(), new RAELootTableProvider(output));
 
         generator.addProvider(event.includeClient(), localization);
     }

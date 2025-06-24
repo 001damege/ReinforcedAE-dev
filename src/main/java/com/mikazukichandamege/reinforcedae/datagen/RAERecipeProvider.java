@@ -23,7 +23,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class RAERecipeProvider extends RecipeProvider {
-    public RAERecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
+    protected RAERecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
         super(output);
     }
 
