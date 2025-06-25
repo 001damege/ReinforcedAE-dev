@@ -12,7 +12,7 @@
       "item": "ae2:singularity"
     },
     "D": {
-      "item": "reinforcedae:cell_component_256m"
+      "item": "reinforcedae:cell_component_16g"
     }
   },
   "pattern": [
@@ -21,7 +21,7 @@
     "ADA"
   ],
   "result": {
-    "item": "reinforcedae:cell_component_1g"
+    "item": "reinforcedae:cell_component_64g"
   },
   "show_notification": true
 }

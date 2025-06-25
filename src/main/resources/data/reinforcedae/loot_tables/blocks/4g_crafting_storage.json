@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "reinforcedae:8g_crafting_storage"
+          "name": "reinforcedae:4g_crafting_storage"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "reinforcedae:blocks/8g_crafting_storage"
+  "random_sequence": "reinforcedae:blocks/4g_crafting_storage"
 }

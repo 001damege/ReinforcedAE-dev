@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "reinforcedae:8g_crafting_storage"
+              "reinforcedae:cell_component_16m"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "reinforcedae:32g_crafting_storage"
+        "recipe": "reinforcedae:cell_component_64m"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "reinforcedae:32g_crafting_storage"
+      "reinforcedae:cell_component_64m"
     ]
   },
   "sends_telemetry_event": false

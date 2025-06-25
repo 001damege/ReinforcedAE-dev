@@ -6,14 +6,14 @@
       "item": "reinforcedae:reinforced_crafting_unit"
     },
     "B": {
-      "item": "reinforcedae:cell_component_128g"
+      "item": "reinforcedae:cell_component_256g"
     }
   },
   "pattern": [
     "AB"
   ],
   "result": {
-    "item": "reinforcedae:128g_crafting_storage"
+    "item": "reinforcedae:256g_crafting_storage"
   },
   "show_notification": true
 }
