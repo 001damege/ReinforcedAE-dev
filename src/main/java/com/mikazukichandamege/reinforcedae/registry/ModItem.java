@@ -52,11 +52,6 @@ public final class ModItem {
     public static final ItemDefinition<ItemIOBusKit> PORT_KIT = item("IO Port Kit", "io_port_kit", ItemIOBusKit::new);
     public static final ItemDefinition<ItemDriveKit> DRIVE_KIT = item("Drive Kit", "drive_kit", ItemDriveKit::new);
 
-    public static final ItemDefinition<MaterialItem> CELL_COMPONENT_1M = item("1M Reinforced Storage Component", "cell_component_1m", MaterialItem::new);
-    public static final ItemDefinition<MaterialItem> CELL_COMPONENT_4M = item("4M Reinforced Storage Component", "cell_component_4m", MaterialItem::new);
-    public static final ItemDefinition<MaterialItem> CELL_COMPONENT_16M = item("16M Reinforced Storage Component", "cell_component_16m", MaterialItem::new);
-    public static final ItemDefinition<MaterialItem> CELL_COMPONENT_64M = item("64M Reinforced Storage Component", "cell_component_64m", MaterialItem::new);
-    public static final ItemDefinition<MaterialItem> CELL_COMPONENT_256M = item("256M Reinforced Storage Component", "cell_component_256m", MaterialItem::new);
     public static final ItemDefinition<MaterialItem> CELL_COMPONENT_1G = item("1G Reinforced Storage Component", "cell_component_1g", MaterialItem::new);
     public static final ItemDefinition<MaterialItem> CELL_COMPONENT_4G = item("4G Reinforced Storage Component", "cell_component_4g", MaterialItem::new);
     public static final ItemDefinition<MaterialItem> CELL_COMPONENT_16G = item("16G Reinforced Storage Component", "cell_component_16g", MaterialItem::new);

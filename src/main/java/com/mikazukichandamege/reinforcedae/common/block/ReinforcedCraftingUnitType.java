@@ -19,15 +19,10 @@ public enum ReinforcedCraftingUnitType implements ICraftingUnitType {
     ACCELERATOR_8192X(0, "accelerator_8192x", 8192),
     MONITOR(0, "monitor", 0),
     STORAGE_16G(16384, "16g_storage", 0),
-    STORAGE_16M(16, "16m_storage", 0),
     STORAGE_1G(1024, "1g_storage", 0),
-    STORAGE_1M(1, "1m_storage", 0),
     STORAGE_256G(262144, "256g_storage", 0),
-    STORAGE_256M(256, "256m_storage", 0),
     STORAGE_4G(4096, "4g_storage", 0),
-    STORAGE_4M(4, "4m_storage", 0),
     STORAGE_64G(65536, "64g_storage", 0),
-    STORAGE_64M(64, "64m_storage", 0),
     UNIT(0, "unit", 0);
 
     private final int storageMb;
@@ -63,11 +58,6 @@ public enum ReinforcedCraftingUnitType implements ICraftingUnitType {
         return switch (this) {
             case STORAGE_1G -> ModBlock.STORAGE_1G;
             case STORAGE_4G -> ModBlock.STORAGE_4G;
-            case STORAGE_1M -> null;
-            case STORAGE_4M -> null;
-            case STORAGE_16M -> null;
-            case STORAGE_64M -> null;
-            case STORAGE_256M -> null;
             case STORAGE_16G -> ModBlock.STORAGE_16G;
             case STORAGE_64G -> ModBlock.STORAGE_64G;
             case STORAGE_256G -> ModBlock.STORAGE_256G;

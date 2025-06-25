@@ -46,11 +46,6 @@ public final class ModBlockEntity {
             ModBlock.ACCELERATOR_8192X);
     public static final BlockEntityType<CraftingBlockEntity> CRAFTING_STORAGE = create(
             "reinforced_crafting_storage", CraftingBlockEntity.class, CraftingBlockEntity::new,
-            ModBlock.STORAGE_1M,
-            ModBlock.STORAGE_4M,
-            ModBlock.STORAGE_16M,
-            ModBlock.STORAGE_64M,
-            ModBlock.STORAGE_256M,
             ModBlock.STORAGE_1G,
             ModBlock.STORAGE_4G,
             ModBlock.STORAGE_16G,

@@ -10,6 +10,7 @@ import appeng.recipes.handlers.InscriberRecipeBuilder;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
 import com.mikazukichandamege.reinforcedae.registry.ModBlock;
 import com.mikazukichandamege.reinforcedae.registry.ModItem;
+import gripe._90.megacells.definition.MEGAItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -100,56 +101,6 @@ public class RAERecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('D', ModItem.OPTICS_PROCESSOR)
                 .unlockedBy("hasItem", has(ModItem.OPTICS_PROCESSOR))
                 .save(save, ReinforcedAE.makeId(ModItem.INTERFACE_KIT.id().getPath()));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CELL_COMPONENT_1M, 1)
-                .pattern("ABA")
-                .pattern("DCD")
-                .pattern("ADA")
-                .define('A', AEItems.SKY_DUST)
-                .define('B', ModItem.OPTICS_PROCESSOR)
-                .define('C', AEItems.SINGULARITY)
-                .define('D', AEItems.CELL_COMPONENT_256K)
-                .unlockedBy("hasItem", has(AEItems.CELL_COMPONENT_256K))
-                .save(save, ReinforcedAE.makeId(ModItem.CELL_COMPONENT_1M.id().getPath()));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CELL_COMPONENT_4M, 1)
-                .pattern("ABA")
-                .pattern("DCD")
-                .pattern("ADA")
-                .define('A', AEItems.SKY_DUST)
-                .define('B', ModItem.OPTICS_PROCESSOR)
-                .define('C', AEItems.SINGULARITY)
-                .define('D', ModItem.CELL_COMPONENT_1M)
-                .unlockedBy("hasItem", has(ModItem.CELL_COMPONENT_1M))
-                .save(save, ReinforcedAE.makeId(ModItem.CELL_COMPONENT_4M.id().getPath()));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CELL_COMPONENT_16M, 1)
-                .pattern("ABA")
-                .pattern("DCD")
-                .pattern("ADA")
-                .define('A', AEItems.SKY_DUST)
-                .define('B', ModItem.OPTICS_PROCESSOR)
-                .define('C', AEItems.SINGULARITY)
-                .define('D', ModItem.CELL_COMPONENT_4M)
-                .unlockedBy("hasItem", has(ModItem.CELL_COMPONENT_4M))
-                .save(save, ReinforcedAE.makeId(ModItem.CELL_COMPONENT_16M.id().getPath()));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CELL_COMPONENT_64M, 1)
-                .pattern("ABA")
-                .pattern("DCD")
-                .pattern("ADA")
-                .define('A', AEItems.SKY_DUST)
-                .define('B', ModItem.OPTICS_PROCESSOR)
-                .define('C', AEItems.SINGULARITY)
-                .define('D', ModItem.CELL_COMPONENT_16M)
-                .unlockedBy("hasItem", has(ModItem.CELL_COMPONENT_16M))
-                .save(save, ReinforcedAE.makeId(ModItem.CELL_COMPONENT_64M.id().getPath()));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CELL_COMPONENT_256M, 1)
-                .pattern("ABA")
-                .pattern("DCD")
-                .pattern("ADA")
-                .define('A', AEItems.SKY_DUST)
-                .define('B', ModItem.OPTICS_PROCESSOR)
-                .define('C', AEItems.SINGULARITY)
-                .define('D', ModItem.CELL_COMPONENT_64M)
-                .unlockedBy("hasItem", has(ModItem.CELL_COMPONENT_64M))
-                .save(save, ReinforcedAE.makeId(ModItem.CELL_COMPONENT_256M.id().getPath()));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CELL_COMPONENT_1G, 1)
                 .pattern("ABA")
                 .pattern("DCD")
@@ -157,8 +108,8 @@ public class RAERecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('A', AEItems.SKY_DUST)
                 .define('B', ModItem.OPTICS_PROCESSOR)
                 .define('C', AEItems.SINGULARITY)
-                .define('D', ModItem.CELL_COMPONENT_256M)
-                .unlockedBy("hasItem", has(ModItem.CELL_COMPONENT_256M))
+                .define('D', MEGAItems.CELL_COMPONENT_256M)
+                .unlockedBy("hasItem", has(MEGAItems.CELL_COMPONENT_256M))
                 .save(save, ReinforcedAE.makeId(ModItem.CELL_COMPONENT_1G.id().getPath()));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItem.CELL_COMPONENT_4G, 1)
                 .pattern("ABA")

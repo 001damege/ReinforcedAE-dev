@@ -8,6 +8,8 @@
     "MixinCraftingCPUCluster"
   ],
   "client": [
+    "client.MixinBuiltInModelHooks",
+    "client.MixinModelBakery"
   ],
   "injectors": {
     "defaultRequire": 1
