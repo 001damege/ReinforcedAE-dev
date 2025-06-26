@@ -29,7 +29,7 @@ public class RAETagProvider {
         @Override
         protected void addTags(HolderLookup.Provider provider) {
             Map<BlockDefinition<?>, List<TagKey<Block>>> specialTags = new HashMap<>();
-            var mineableTag = List.of(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL);
+            var mineableTag = List.of(BlockTags.MINEABLE_WITH_PICKAXE);
 
             for (var block : ModBlock.getBlocks()) {
                 for (var desiredTag : specialTags.getOrDefault(block, mineableTag)) {
