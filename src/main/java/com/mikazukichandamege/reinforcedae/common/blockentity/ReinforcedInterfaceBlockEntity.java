@@ -3,10 +3,8 @@ package com.mikazukichandamege.reinforcedae.common.blockentity;
 import appeng.blockentity.misc.InterfaceBlockEntity;
 import appeng.helpers.InterfaceLogic;
 import appeng.menu.ISubMenu;
-import appeng.menu.MenuOpener;
 import appeng.menu.locator.MenuLocator;
 import com.mikazukichandamege.reinforcedae.registry.ModBlock;
-import com.mikazukichandamege.reinforcedae.registry.ModContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -25,12 +23,12 @@ public class ReinforcedInterfaceBlockEntity extends InterfaceBlockEntity {
 
     @Override
     public void openMenu(Player player, MenuLocator locator) {
-        MenuOpener.open(ModContainer.REINFORCED_INTERFACE, player, locator);
+        super.openMenu(player, locator);
     }
 
     @Override
     public void returnToMainMenu(Player player, ISubMenu subMenu) {
-        MenuOpener.returnTo(ModContainer.REINFORCED_INTERFACE, player, subMenu.getLocator());
+        super.returnToMainMenu(player, subMenu);
     }
 
     @Override

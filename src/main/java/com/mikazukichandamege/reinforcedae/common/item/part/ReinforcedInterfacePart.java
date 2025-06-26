@@ -11,7 +11,6 @@ import appeng.menu.locator.MenuLocator;
 import appeng.parts.PartModel;
 import appeng.parts.misc.InterfacePart;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
-import com.mikazukichandamege.reinforcedae.registry.ModContainer;
 import com.mikazukichandamege.reinforcedae.registry.ModItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -37,12 +36,12 @@ public class ReinforcedInterfacePart extends InterfacePart {
 
     @Override
     public void openMenu(Player player, MenuLocator locator) {
-        MenuOpener.open(ModContainer.REINFORCED_INTERFACE, player, locator);
+        super.openMenu(player, locator);
     }
 
     @Override
     public void returnToMainMenu(Player player, ISubMenu subMenu) {
-        MenuOpener.returnTo(ModContainer.REINFORCED_INTERFACE, player, subMenu.getLocator());
+        super.returnToMainMenu(player, subMenu);
     }
 
     @Override

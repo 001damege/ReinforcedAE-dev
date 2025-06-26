@@ -4,11 +4,9 @@ import appeng.api.stacks.AEItemKey;
 import appeng.blockentity.crafting.PatternProviderBlockEntity;
 import appeng.helpers.patternprovider.PatternProviderLogic;
 import appeng.menu.ISubMenu;
-import appeng.menu.MenuOpener;
 import appeng.menu.locator.MenuLocator;
 import com.mikazukichandamege.reinforcedae.common.block.ReinforcedPatternProviderBlock;
 import com.mikazukichandamege.reinforcedae.registry.ModBlock;
-import com.mikazukichandamege.reinforcedae.registry.ModContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -27,12 +25,12 @@ public class ReinforcedPatternProviderBlockEntity extends PatternProviderBlockEn
 
     @Override
     public void openMenu(Player player, MenuLocator locator) {
-        MenuOpener.open(ModContainer.REINFORCED_PATTERN_PROVIDER, player, locator);
+        super.openMenu(player, locator);
     }
 
     @Override
     public void returnToMainMenu(Player player, ISubMenu subMenu) {
-        MenuOpener.open(ModContainer.REINFORCED_PATTERN_PROVIDER, player, subMenu.getLocator());
+        super.returnToMainMenu(player, subMenu);
     }
 
     @Override

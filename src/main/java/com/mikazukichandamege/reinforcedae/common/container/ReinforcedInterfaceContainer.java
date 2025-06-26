@@ -2,11 +2,11 @@ package com.mikazukichandamege.reinforcedae.common.container;
 
 import appeng.helpers.InterfaceLogicHost;
 import appeng.menu.implementations.InterfaceMenu;
-import com.mikazukichandamege.reinforcedae.registry.ModContainer;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.MenuType;
 
 public class ReinforcedInterfaceContainer extends InterfaceMenu {
-    public ReinforcedInterfaceContainer(int id, Inventory ip, InterfaceLogicHost host) {
-        super(ModContainer.REINFORCED_INTERFACE, id, ip, host);
+    public ReinforcedInterfaceContainer(MenuType<? extends InterfaceMenu> menuType, int id, Inventory ip, InterfaceLogicHost host) {
+        super(menuType, id, ip, host);
     }
 }
