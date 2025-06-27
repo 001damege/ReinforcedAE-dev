@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "hasItem": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "reinforcedae:adv_energy_cell"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "reinforcedae:per_energy_cell"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "hasItem",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "reinforcedae:per_energy_cell"
+    ]
+  },
+  "sends_telemetry_event": false
+}

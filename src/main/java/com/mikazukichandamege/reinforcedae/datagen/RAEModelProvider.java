@@ -4,16 +4,15 @@ import appeng.api.orientation.BlockOrientation;
 import appeng.block.crafting.AbstractCraftingUnitBlock;
 import appeng.block.networking.EnergyCellBlock;
 import appeng.core.AppEng;
-import appeng.core.definitions.BlockDefinition;
-import appeng.core.definitions.ItemDefinition;
+import com.mikazukichandamege.reinforcedae.registries.BlockDeferredRegistries;
+import com.mikazukichandamege.reinforcedae.registries.ItemDeferredRegistries;
 import appeng.datagen.providers.models.AE2BlockStateProvider;
 import appeng.init.client.InitItemModelsProperties;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
-import com.mikazukichandamege.reinforcedae.common.block.ReinforcedCraftingUnitType;
-import com.mikazukichandamege.reinforcedae.common.block.ReinforcedPatternProviderBlock;
-import com.mikazukichandamege.reinforcedae.registry.ModBlock;
-import com.mikazukichandamege.reinforcedae.registry.ModBlock;
-import com.mikazukichandamege.reinforcedae.registry.ModItem;
+import com.mikazukichandamege.reinforcedae.common.block.RnfCraftingUnitType;
+import com.mikazukichandamege.reinforcedae.common.block.RnfPatternProviderBlock;
+import com.mikazukichandamege.reinforcedae.registry.RAEBlock;
+import com.mikazukichandamege.reinforcedae.registry.RAEItem;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.models.blockstates.PropertyDispatch;
 import net.minecraft.data.models.blockstates.Variant;
@@ -32,45 +31,43 @@ public class RAEModelProvider extends AE2BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        basicItem(ModItem.REINFORCED_CARD);
-        basicItem(ModItem.SPEED_CARD);
-        basicItem(ModItem.ENERGY_CARD);
-        basicItem(ModItem.ATTACK_AMPLIFICATION_CARD);
-        basicItem(ModItem.ATTACK_SPEED_CARD);
-        basicItem(ModItem.OPTICS_PROCESSOR);
-        basicItem(ModItem.PATTERN_PROVIDER_KIT);
-        basicItem(ModItem.INTERFACE_KIT);
-        basicItem(ModItem.PORT_KIT);
-        basicItem(ModItem.DRIVE_KIT);
-        basicItem(ModItem.CELL_COMPONENT_1G);
-        basicItem(ModItem.CELL_COMPONENT_4G);
-        basicItem(ModItem.CELL_COMPONENT_16G);
-        basicItem(ModItem.CELL_COMPONENT_64G);
-        basicItem(ModItem.CELL_COMPONENT_256G);
+        basicItem(RAEItem.REINFORCED_CARD);
+        basicItem(RAEItem.SPEED_CARD);
+        basicItem(RAEItem.ENERGY_CARD);
+        basicItem(RAEItem.OPTICS_PROCESSOR);
+        basicItem(RAEItem.PATTERN_PROVIDER_KIT);
+        basicItem(RAEItem.INTERFACE_KIT);
+        basicItem(RAEItem.PORT_KIT);
+        basicItem(RAEItem.DRIVE_KIT);
+        basicItem(RAEItem.CELL_COMPONENT_1G);
+        basicItem(RAEItem.CELL_COMPONENT_4G);
+        basicItem(RAEItem.CELL_COMPONENT_16G);
+        basicItem(RAEItem.CELL_COMPONENT_64G);
+        basicItem(RAEItem.CELL_COMPONENT_256G);
 
-        for (var type : ReinforcedCraftingUnitType.values()) {
+        for (var type : RnfCraftingUnitType.values()) {
             basicCraftingBlockModel(type);
         }
 
-        interfaceOrPatternPart(ModItem.REINFORCED_PATTERN_PROVIDER);
-        interfaceOrPatternPart(ModItem.REINFORCED_INTERFACE);
+        interfaceOrPatternPart(RAEItem.PATTERN_PROVIDER);
+        interfaceOrPatternPart(RAEItem.INTERFACE);
 
-        patternProvider(ModBlock.REINFORCED_PATTERN_PROVIDER);
-        patternProvider(ModBlock.REINFORCED_INTERFACE);
+        patternProvider(RAEBlock.PATTERN_PROVIDER);
+        patternProvider(RAEBlock.INTERFACE);
 
-        energyCell(ModBlock.ADVANCED_ENERGY_CELL);
-        energyCell(ModBlock.IMPROVED_ENERGY_CELL);
-        energyCell(ModBlock.PERFECT_ENERGY_CELL);
-        energyCell(ModBlock.QUANTUM_ENERGY_CELL);
+        energyCell(RAEBlock.ADV_ENERGY);
+        energyCell(RAEBlock.IMP_ENERGY);
+        energyCell(RAEBlock.PER_ENERGY);
+        energyCell(RAEBlock.QUA_ENERGY);
 
         craftingMonitor();
     }
 
-    private String modelPath(BlockDefinition<?> block) {
+    private String modelPath(BlockDeferredRegistries<?> block) {
         return block.id().getPath();
     }
 
-    private void basicItem(ItemDefinition<?> item, String path) {
+    private void basicItem(ItemDeferredRegistries<?> item, String path) {
         if (path.isEmpty()) itemModels().basicItem(item.asItem());
         else {
             String id = item.id().getPath();
@@ -78,24 +75,24 @@ public class RAEModelProvider extends AE2BlockStateProvider {
         }
     }
 
-    private void basicItem(ItemDefinition<?> item) {
+    private void basicItem(ItemDeferredRegistries<?> item) {
         basicItem(item, "");
     }
 
-    private void basicBlock(BlockDefinition<?> block) {
+    private void basicBlock(BlockDeferredRegistries<?> block) {
         var model = cubeAll(block.block());
         simpleBlock(block.block(), model);
         simpleBlockItem(block.block(), model);
     }
 
-    private void basicCraftingBlockModel(ReinforcedCraftingUnitType type) {
+    private void basicCraftingBlockModel(RnfCraftingUnitType type) {
         var craftingBlock = type.getDefinition().block();
         var blockModel = models().cubeAll("block/crafting/" + type.getAffix(), ReinforcedAE.makeId("block/crafting/" + type.getAffix()));
         simpleBlockItem(craftingBlock, blockModel);
         simpleBlock(craftingBlock,  blockModel);
     }
 
-    private void interfaceOrPatternPart(ItemDefinition<?> part, boolean isExport) {
+    private void interfaceOrPatternPart(ItemDeferredRegistries<?> part, boolean isExport) {
         var id = part.id().getPath();
         var partName = id.substring(0, id.lastIndexOf('_'));
         var front = ReinforcedAE.makeId("part/" + partName);
@@ -114,11 +111,11 @@ public class RAEModelProvider extends AE2BlockStateProvider {
                 .texture("back", back);
     }
 
-    private void interfaceOrPatternPart(ItemDefinition<?> part) {
+    private void interfaceOrPatternPart(ItemDeferredRegistries<?> part) {
         interfaceOrPatternPart(part, false);
     }
 
-    private void patternProvider(BlockDefinition<?> block) {
+    private void patternProvider(BlockDeferredRegistries<?> block) {
         var patternProviderNormal = cubeAll(block.block());
         var blockName = block.id().getPath();
         simpleBlockItem(block.block(), patternProviderNormal);
@@ -128,8 +125,8 @@ public class RAEModelProvider extends AE2BlockStateProvider {
                 ReinforcedAE.makeId("block/" + blockName + "_alt"),
                 ReinforcedAE.makeId("block/" + blockName + "_back"),
                 ReinforcedAE.makeId("block/" + blockName + "_front"));
-        multiVariantGenerator(block, Variant.variant())
-                .with(PropertyDispatch.property(ReinforcedPatternProviderBlock.FACING)
+        multiVariantGenerator(block.getBlockDefinition(), Variant.variant())
+                .with(PropertyDispatch.property(RnfPatternProviderBlock.FACING)
                         .generate((facing) -> {
                             var forward = facing.getDirection();
                             if (forward == null) {
@@ -146,7 +143,7 @@ public class RAEModelProvider extends AE2BlockStateProvider {
                         }));
     }
 
-    private void energyCell(BlockDefinition<?> block) {
+    private void energyCell(BlockDeferredRegistries<?> block) {
         var blockBuilder = getVariantBuilder(block.block());
         var models = new ArrayList<ModelFile>();
 
@@ -165,15 +162,15 @@ public class RAEModelProvider extends AE2BlockStateProvider {
         }
     }
 
-    private void ioPort(BlockDefinition<?> block) {
+    private void ioPort(BlockDeferredRegistries<?> block) {
 
     }
 
     private void craftingMonitor() {
-        var formedModel = ReinforcedAE.makeId("block/crafting/" + ModBlock.CRAFTING_MONITOR.id().getPath() + "_formed");
-        var unformedModel = ReinforcedAE.makeId("block/crafting/" + ModBlock.CRAFTING_MONITOR.id().getPath());
+        var formedModel = ReinforcedAE.makeId("block/crafting/" + RAEBlock.MONITOR.id().getPath() + "_formed");
+        var unformedModel = ReinforcedAE.makeId("block/crafting/" + RAEBlock.MONITOR.id().getPath());
 
-        multiVariantGenerator(ModBlock.CRAFTING_MONITOR)
+        multiVariantGenerator(RAEBlock.MONITOR.getBlockDefinition())
                 .with(PropertyDispatch.properties(AbstractCraftingUnitBlock.FORMED, BlockStateProperties.FACING)
                         .generate((formed, facing) -> {
                             if (formed) {

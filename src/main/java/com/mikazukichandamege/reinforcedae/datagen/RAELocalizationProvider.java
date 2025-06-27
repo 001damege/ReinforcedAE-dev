@@ -1,9 +1,9 @@
 package com.mikazukichandamege.reinforcedae.datagen;
 
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
-import com.mikazukichandamege.reinforcedae.registry.ModBlock;
-import com.mikazukichandamege.reinforcedae.registry.ModItem;
-import com.mikazukichandamege.reinforcedae.registry.ModTranslation;
+import com.mikazukichandamege.reinforcedae.registry.RAEBlock;
+import com.mikazukichandamege.reinforcedae.registry.RAEItem;
+import com.mikazukichandamege.reinforcedae.registry.RAETranslation;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 import org.jetbrains.annotations.NotNull;
@@ -15,13 +15,13 @@ public class RAELocalizationProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        for (var item : ModItem.getItems()) {
+        for (var item : RAEItem.getItems()) {
             add(item.asItem(), item.getEnglishName());
         }
-        for (var block : ModBlock.getBlocks()) {
+        for (var block : RAEBlock.getBlocks()) {
             add(block.block(), block.getEnglishName());
         }
-        for (var translation : ModTranslation.values()) {
+        for (var translation : RAETranslation.values()) {
             add(translation.getTranslationKey(), translation.getEnglishText());
         }
     }

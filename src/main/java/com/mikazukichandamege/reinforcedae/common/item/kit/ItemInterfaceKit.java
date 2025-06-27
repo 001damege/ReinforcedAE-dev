@@ -1,13 +1,11 @@
 package com.mikazukichandamege.reinforcedae.common.item.kit;
 
-import appeng.blockentity.crafting.PatternProviderBlockEntity;
 import appeng.blockentity.misc.InterfaceBlockEntity;
 import appeng.blockentity.networking.CableBusBlockEntity;
 import appeng.parts.AEBasePart;
-import appeng.parts.crafting.PatternProviderPart;
 import appeng.parts.misc.InterfacePart;
-import com.mikazukichandamege.reinforcedae.registry.ModBlock;
-import com.mikazukichandamege.reinforcedae.registry.ModItem;
+import com.mikazukichandamege.reinforcedae.registry.RAEBlock;
+import com.mikazukichandamege.reinforcedae.registry.RAEItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -22,7 +20,7 @@ import javax.annotation.Nonnull;
 
 public class ItemInterfaceKit extends ItemKitBase {
     public ItemInterfaceKit(Properties properties) {
-        super(properties);
+        super(properties.fireResistant());
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -38,7 +36,7 @@ public class ItemInterfaceKit extends ItemKitBase {
             if (blockEntityClass == InterfaceBlockEntity.class) {
                 var originState = level.getBlockState(pos);
                 var isSmall = blockEntityClass == InterfaceBlockEntity.class;
-                var state = isSmall ? ModBlock.REINFORCED_INTERFACE.block().getStateForPlacement(ctx) : null;
+                var state = isSmall ? RAEBlock.INTERFACE.block().getStateForPlacement(ctx) : null;
                 if (state == null) {
                     return InteractionResult.PASS;
                 }
@@ -53,7 +51,7 @@ public class ItemInterfaceKit extends ItemKitBase {
 
                     }
                 }
-                BlockEntityType<?> blockEntityType = isSmall ? ModBlock.REINFORCED_INTERFACE.block().getBlockEntityType() : null;
+                BlockEntityType<?> blockEntityType = isSmall ? RAEBlock.INTERFACE.block().getBlockEntityType() : null;
                 BlockEntity blockEntity = blockEntityType.create(pos, state);
                 replaceBlockEntity(level, pos, entity, blockEntity, state);
                 context.getItemInHand().shrink(1);
@@ -66,7 +64,7 @@ public class ItemInterfaceKit extends ItemKitBase {
                     var side = basePart.getSide();
                     var constants = new CompoundTag();
                     var isSmall = part.getClass() == InterfacePart.class;
-                    var partItem = isSmall ? ModItem.REINFORCED_INTERFACE.asItem() : null;
+                    var partItem = isSmall ? RAEItem.INTERFACE.asItem() : null;
                     part.writeToNBT(constants);
                     var p = cable.replacePart(partItem, side, context.getPlayer(), null);
                     if (p != null) {

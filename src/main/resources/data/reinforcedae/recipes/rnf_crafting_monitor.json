@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "reinforcedae:rnf_crafting_unit"
+    },
+    "B": {
+      "item": "ae2:storage_monitor"
+    }
+  },
+  "pattern": [
+    "AB"
+  ],
+  "result": {
+    "item": "reinforcedae:rnf_crafting_monitor"
+  },
+  "show_notification": true
+}

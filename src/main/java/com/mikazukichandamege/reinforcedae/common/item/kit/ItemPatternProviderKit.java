@@ -4,8 +4,8 @@ import appeng.blockentity.crafting.PatternProviderBlockEntity;
 import appeng.blockentity.networking.CableBusBlockEntity;
 import appeng.parts.AEBasePart;
 import appeng.parts.crafting.PatternProviderPart;
-import com.mikazukichandamege.reinforcedae.registry.ModBlock;
-import com.mikazukichandamege.reinforcedae.registry.ModItem;
+import com.mikazukichandamege.reinforcedae.registry.RAEBlock;
+import com.mikazukichandamege.reinforcedae.registry.RAEItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -36,7 +36,7 @@ public class ItemPatternProviderKit extends ItemKitBase {
             if (blockEntityClass == PatternProviderBlockEntity.class) {
                 var originState = level.getBlockState(pos);
                 var isSmall = blockEntityClass == PatternProviderBlockEntity.class;
-                var state = isSmall ? ModBlock.REINFORCED_PATTERN_PROVIDER.block().getStateForPlacement(ctx) : null;
+                var state = isSmall ? RAEBlock.PATTERN_PROVIDER.block().getStateForPlacement(ctx) : null;
                 if (state == null) {
                     return InteractionResult.PASS;
                 }
@@ -51,7 +51,7 @@ public class ItemPatternProviderKit extends ItemKitBase {
 
                     }
                 }
-                BlockEntityType<?> blockEntityType = isSmall ? ModBlock.REINFORCED_PATTERN_PROVIDER.block().getBlockEntityType() : null;
+                BlockEntityType<?> blockEntityType = isSmall ? RAEBlock.PATTERN_PROVIDER.block().getBlockEntityType() : null;
                 BlockEntity blockEntity = blockEntityType.create(pos, state);
                 replaceBlockEntity(level, pos, entity, blockEntity, state);
                 context.getItemInHand().shrink(1);
@@ -64,7 +64,7 @@ public class ItemPatternProviderKit extends ItemKitBase {
                     var side = basePart.getSide();
                     var constants = new CompoundTag();
                     var isSmall = part.getClass() == PatternProviderPart.class;
-                    var partItem = isSmall ? ModItem.REINFORCED_INTERFACE.asItem() : null;
+                    var partItem = isSmall ? RAEItem.PATTERN_PROVIDER.asItem() : null;
                     part.writeToNBT(constants);
                     var p = cable.replacePart(partItem, side, context.getPlayer(), null);
                     if (p != null) {

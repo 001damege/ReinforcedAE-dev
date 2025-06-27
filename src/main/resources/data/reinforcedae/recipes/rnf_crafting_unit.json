@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "ae2:crafting_unit"
+    },
+    "B": {
+      "item": "reinforcedae:optics_processor"
+    },
+    "C": {
+      "item": "ae2:fluix_smart_dense_cable"
+    },
+    "D": {
+      "item": "ae2:singularity"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDC",
+    "ABA"
+  ],
+  "result": {
+    "item": "reinforcedae:rnf_crafting_unit"
+  },
+  "show_notification": true
+}

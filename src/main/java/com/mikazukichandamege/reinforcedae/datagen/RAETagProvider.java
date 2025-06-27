@@ -2,7 +2,7 @@ package com.mikazukichandamege.reinforcedae.datagen;
 
 import appeng.core.definitions.BlockDefinition;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
-import com.mikazukichandamege.reinforcedae.registry.ModBlock;
+import com.mikazukichandamege.reinforcedae.registry.RAEBlock;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -31,7 +31,7 @@ public class RAETagProvider {
             Map<BlockDefinition<?>, List<TagKey<Block>>> specialTags = new HashMap<>();
             var mineableTag = List.of(BlockTags.MINEABLE_WITH_PICKAXE);
 
-            for (var block : ModBlock.getBlocks()) {
+            for (var block : RAEBlock.getBlocks()) {
                 for (var desiredTag : specialTags.getOrDefault(block, mineableTag)) {
                     tag(desiredTag).add(block.block());
                 }

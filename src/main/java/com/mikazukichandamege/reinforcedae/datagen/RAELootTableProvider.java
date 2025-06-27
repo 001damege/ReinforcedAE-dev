@@ -1,6 +1,6 @@
 package com.mikazukichandamege.reinforcedae.datagen;
 
-import com.mikazukichandamege.reinforcedae.registry.ModBlock;
+import com.mikazukichandamege.reinforcedae.registry.RAEBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
@@ -30,7 +30,7 @@ public class RAELootTableProvider extends LootTableProvider {
 
         @Override
         public void generate() {
-            for (var block : ModBlock.getBlocks()) {
+            for (var block : RAEBlock.getBlocks()) {
                 add(block.block(), LootTable.lootTable().withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(block))

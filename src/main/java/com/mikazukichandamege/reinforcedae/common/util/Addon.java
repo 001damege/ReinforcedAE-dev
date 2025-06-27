@@ -1,14 +1,13 @@
 package com.mikazukichandamege.reinforcedae.common.util;
 
 public enum Addon {
-    Mekanism("mekanism"),
+    AppMek("appmek"),
     AppBot("appbot"),
     Appflux("appflux"),
     Ars("ars_nouveau"),
     ExtendedAE("expatternprovider"),
     AdvancedAE("advanced_ae"),
-    Avaritia("avaritia"),
-    MEGACells("megacells");
+    Avaritia("avaritia");
 
     private final String modId;
 

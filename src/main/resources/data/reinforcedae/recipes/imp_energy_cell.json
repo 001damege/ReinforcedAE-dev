@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "ae2:dense_energy_cell"
+    },
+    "B": {
+      "item": "ae2:singularity"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "item": "reinforcedae:imp_energy_cell"
+  },
+  "show_notification": true
+}
