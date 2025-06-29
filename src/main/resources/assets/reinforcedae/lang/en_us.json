@@ -28,7 +28,9 @@
   "gui.tooltips.reinforcedae.Threads_4096x": "Provides 4096 co-processing threads per block.",
   "gui.tooltips.reinforcedae.Threads_4x": "Provides 4 co-processing threads per block.",
   "gui.tooltips.reinforcedae.Threads_64x": "Provides 64 co-processing threads per block.",
-  "gui.tooltips.reinforcedae.Threads_65536x": "Prevides 65536 co-processing threads per block.",
+  "gui.tooltips.reinforcedae.Threads_65536x": "Provides 65536 co-processing threads per block.",
+  "item.reinforcedae.2g_fluid_disk": "2G Fluid Disk Drive",
+  "item.reinforcedae.2g_item_disk": "2G Item Disk Drive",
   "item.reinforcedae.cable_rnf_interface": "Reinforced Interface",
   "item.reinforcedae.cable_rnf_pattern_provider": "Reinforced Pattern Provider",
   "item.reinforcedae.cell_component_16g": "16G Storage Component",
@@ -44,7 +46,8 @@
   "item.reinforcedae.optics_processor": "Optics Processor",
   "item.reinforcedae.pattern_provider_kit": "Pattern Provider kit",
   "item.reinforcedae.port_kit": "IO Port kit",
-  "item.reinforcedae.reinforced_card": "Reinforced Card",
-  "item.reinforcedae.reinforced_fluid_cell_housing": "Reinforced Fluid Cell Housing",
-  "item.reinforcedae.reinforced_item_cell_housing": "Reinforced Item Cell Housing"
+  "item.reinforcedae.quantum_tool": "Quantum MultiTool",
+  "item.reinforcedae.rnf_card": "Reinforced Card",
+  "item.reinforcedae.rnf_fluid_cell_housing": "Reinforced Fluid Cell Housing",
+  "item.reinforcedae.rnf_item_cell_housing": "Reinforced Item Cell Housing"
 }
