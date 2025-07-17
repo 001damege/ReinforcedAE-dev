@@ -1,12 +1,10 @@
 package com.mikazukichandamege.reinforcedae.registry;
 
-import appeng.block.networking.EnergyCellBlock;
-import appeng.block.networking.EnergyCellBlockItem;
-import com.mikazukichandamege.reinforcedae.common.block.*;
 import appeng.block.crafting.CraftingMonitorBlock;
 import appeng.block.crafting.CraftingUnitBlock;
+import appeng.block.networking.EnergyCellBlock;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
-import com.mikazukichandamege.reinforcedae.common.block.RnfBlockItem;
+import com.mikazukichandamege.reinforcedae.common.block.*;
 import com.mikazukichandamege.reinforcedae.common.block.energy.RnfEnergyBlockItem;
 import com.mikazukichandamege.reinforcedae.registries.BlockDeferredRegistries;
 import com.mikazukichandamege.reinforcedae.registries.ItemDeferredRegistries;
@@ -21,6 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
@@ -53,10 +52,11 @@ public final class RAEBlock {
     public static final BlockDeferredRegistries<EnergyCellBlock> ADV_ENERGY = block("Advanced Energy Cell", "adv_energy_cell", () -> new EnergyCellBlock(115343360, 18400, 12800), RnfEnergyBlockItem::new);
     public static final BlockDeferredRegistries<EnergyCellBlock> PER_ENERGY = block("Perfect Energy Cell", "per_energy_cell", () -> new EnergyCellBlock(805306368, 147200, 12800), RnfEnergyBlockItem::new);
     public static final BlockDeferredRegistries<EnergyCellBlock> QUA_ENERGY = block("Quantum Energy Cell", "qua_energy_cell", () -> new EnergyCellBlock(1.7179869184E10, 1177600, 128000), RnfEnergyBlockItem::new);
+    public static final BlockDeferredRegistries<RnfDriveBlock> DRIVE = block("Reinforced Drive", "rnf_drive", RnfDriveBlock::new, RnfBlockItem::new);
 
     private static <T extends Block> BlockDeferredRegistries<T> block(String englishName, String id, Supplier<T> blockSupplier, @Nullable BiFunction<Block, Item.Properties, BlockItem> factory) {
         var block = DR.register(id, blockSupplier);
-        var item = RAEItem.DR.register(id, () -> factory.apply(block.get(), new Item.Properties()));
+        var item = RAEItem.DR.register(id, () -> Objects.requireNonNull(factory).apply(block.get(), new Item.Properties()));
         var itemDef = new ItemDeferredRegistries<>(englishName, item);
         var def = new BlockDeferredRegistries<>(englishName, block, itemDef);
         BLOCKS.add(def);

@@ -3,12 +3,14 @@ package com.mikazukichandamege.reinforcedae.registry;
 import appeng.api.parts.IPart;
 import appeng.api.parts.IPartItem;
 import appeng.api.parts.PartModels;
+import appeng.api.stacks.AEKeyType;
 import appeng.api.upgrades.Upgrades;
 import appeng.items.materials.EnergyCardItem;
 import appeng.items.materials.MaterialItem;
 import appeng.items.parts.PartItem;
 import appeng.items.parts.PartModelsHelper;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
+import com.mikazukichandamege.reinforcedae.common.item.cell.ExDISK;
 import com.mikazukichandamege.reinforcedae.common.item.kit.ItemDriveKit;
 import com.mikazukichandamege.reinforcedae.common.item.kit.ItemIOBusKit;
 import com.mikazukichandamege.reinforcedae.common.item.kit.ItemInterfaceKit;
@@ -16,6 +18,7 @@ import com.mikazukichandamege.reinforcedae.common.item.kit.ItemPatternProviderKi
 import com.mikazukichandamege.reinforcedae.common.item.part.RnfInterfacePart;
 import com.mikazukichandamege.reinforcedae.common.item.part.RnfPatternProviderPart;
 import com.mikazukichandamege.reinforcedae.common.item.part.RnfPatternProviderPartItem;
+import com.mikazukichandamege.reinforcedae.common.item.tool.QuantumTool;
 import com.mikazukichandamege.reinforcedae.registries.ItemDeferredRegistries;
 import net.minecraft.Util;
 import net.minecraft.world.item.Item;
@@ -26,6 +29,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.DoubleSupplier;
 import java.util.function.Function;
 
 @SuppressWarnings("unused")
@@ -37,11 +41,10 @@ public final class RAEItem {
         return Collections.unmodifiableList(ITEMS);
     }
 
-    public static final ItemDeferredRegistries<MaterialItem> REINFORCED_CARD = item("Reinforced Card", "reinforced_card", MaterialItem::new);
+    public static final ItemDeferredRegistries<MaterialItem> REINFORCED_CARD = item("Reinforced Card", "rnf_card", MaterialItem::new);
     public static final ItemDeferredRegistries<Item> SPEED_CARD = item("Compressed Accelerator Card", "compressed_speed_card", Upgrades::createUpgradeCardItem);
     public static final ItemDeferredRegistries<EnergyCardItem> ENERGY_CARD = item("Compressed Energy Card", "compressed_energy_card", p -> new EnergyCardItem(p, 9));
-    public static final ItemDeferredRegistries<MaterialItem> ITEM_CELL_HOUSING = item("Reinforced Item Cell Housing", "reinforced_item_cell_housing", MaterialItem::new);
-    public static final ItemDeferredRegistries<MaterialItem> FLUID_CELL_HOUSING = item("Reinforced Fluid Cell Housing", "reinforced_fluid_cell_housing", MaterialItem::new);
+    public static final ItemDeferredRegistries<MaterialItem> DISK_HOUSING = item("Reinforced Disk Housing", "rnf_disk_housing", MaterialItem::new);
     public static final ItemDeferredRegistries<MaterialItem> OPTICS_PROCESSOR = item("Optics Processor", "optics_processor", MaterialItem::new);
     public static final ItemDeferredRegistries<ItemPatternProviderKit> PATTERN_PROVIDER_KIT = item("Pattern Provider kit", "pattern_provider_kit", ItemPatternProviderKit::new);
     public static final ItemDeferredRegistries<ItemInterfaceKit> INTERFACE_KIT = item("Interface kit", "interface_kit", ItemInterfaceKit::new);
@@ -61,6 +64,11 @@ public final class RAEItem {
         return item("Reinforced Pattern Provider", "cable_rnf_pattern_provider", RnfPatternProviderPartItem::new);
     });
 
+    public static final ItemDeferredRegistries<QuantumTool> QUANTUM_TOOL = item("Quantum MultiTool", "quantum_tool", p -> new QuantumTool(getQuantumToolAE(), p));
+
+    public static final ItemDeferredRegistries<ExDISK> ITEM_DISK = item("Item Disk Drive", "item_disk_drive", p -> new ExDISK(CELL_COMPONENT_1G, Integer.MAX_VALUE / 1000, 10.0f, AEKeyType.items()));
+    public static final ItemDeferredRegistries<ExDISK> FLUID_DISK = item("Fluid Disk Drive", "fluid_disk_drive", p -> new ExDISK(CELL_COMPONENT_1G, Integer.MAX_VALUE / 1000, 10.0f, AEKeyType.fluids()));
+
     public static <T extends Item> ItemDeferredRegistries<T> item(String englishName, String id, Function<Item.Properties, T> factory) {
         ItemDeferredRegistries<T> def = new ItemDeferredRegistries<>(englishName, DR.register(id, () -> factory.apply(new Item.Properties())));
         ITEMS.add(def);
@@ -70,5 +78,9 @@ public final class RAEItem {
     private static <T extends IPart> ItemDeferredRegistries<PartItem<T>> part(String englishName, String id, Class<T> partClass, Function<IPartItem<T>, T> factory) {
         PartModels.registerModels(PartModelsHelper.createModels(partClass));
         return item(englishName, id, p -> new PartItem<>(p, partClass, factory));
+    }
+
+    public static DoubleSupplier getQuantumToolAE() {
+        return () -> 123456789;
     }
 }

@@ -4,13 +4,13 @@ import appeng.api.orientation.BlockOrientation;
 import appeng.block.crafting.AbstractCraftingUnitBlock;
 import appeng.block.networking.EnergyCellBlock;
 import appeng.core.AppEng;
-import com.mikazukichandamege.reinforcedae.registries.BlockDeferredRegistries;
-import com.mikazukichandamege.reinforcedae.registries.ItemDeferredRegistries;
 import appeng.datagen.providers.models.AE2BlockStateProvider;
 import appeng.init.client.InitItemModelsProperties;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
 import com.mikazukichandamege.reinforcedae.common.block.RnfCraftingUnitType;
 import com.mikazukichandamege.reinforcedae.common.block.RnfPatternProviderBlock;
+import com.mikazukichandamege.reinforcedae.registries.BlockDeferredRegistries;
+import com.mikazukichandamege.reinforcedae.registries.ItemDeferredRegistries;
 import com.mikazukichandamege.reinforcedae.registry.RAEBlock;
 import com.mikazukichandamege.reinforcedae.registry.RAEItem;
 import net.minecraft.data.PackOutput;
@@ -18,6 +18,7 @@ import net.minecraft.data.models.blockstates.PropertyDispatch;
 import net.minecraft.data.models.blockstates.Variant;
 import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -31,22 +32,12 @@ public class RAEModelProvider extends AE2BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        basicItem(RAEItem.REINFORCED_CARD);
-        basicItem(RAEItem.SPEED_CARD);
-        basicItem(RAEItem.ENERGY_CARD);
-        basicItem(RAEItem.OPTICS_PROCESSOR);
-        basicItem(RAEItem.PATTERN_PROVIDER_KIT);
-        basicItem(RAEItem.INTERFACE_KIT);
-        basicItem(RAEItem.PORT_KIT);
-        basicItem(RAEItem.DRIVE_KIT);
-        basicItem(RAEItem.CELL_COMPONENT_1G);
-        basicItem(RAEItem.CELL_COMPONENT_4G);
-        basicItem(RAEItem.CELL_COMPONENT_16G);
-        basicItem(RAEItem.CELL_COMPONENT_64G);
-        basicItem(RAEItem.CELL_COMPONENT_256G);
-
         for (var type : RnfCraftingUnitType.values()) {
             basicCraftingBlockModel(type);
+        }
+
+        for (var item : RAEItem.getItems()) {
+            basicItem(item);
         }
 
         interfaceOrPatternPart(RAEItem.PATTERN_PROVIDER);
@@ -67,16 +58,9 @@ public class RAEModelProvider extends AE2BlockStateProvider {
         return block.id().getPath();
     }
 
-    private void basicItem(ItemDeferredRegistries<?> item, String path) {
-        if (path.isEmpty()) itemModels().basicItem(item.asItem());
-        else {
-            String id = item.id().getPath();
-            itemModels().singleTexture(id, mcLoc("item/generated"), "layer0", ReinforcedAE.makeId("item/" + path + "/" + id));
-        }
-    }
-
     private void basicItem(ItemDeferredRegistries<?> item) {
-        basicItem(item, "");
+        String id = item.id().getPath();
+        itemModels().singleTexture(id, mcLoc("item/generated"), "layer0", ReinforcedAE.makeId("item/" + id));
     }
 
     private void basicBlock(BlockDeferredRegistries<?> block) {
@@ -181,6 +165,10 @@ public class RAEModelProvider extends AE2BlockStateProvider {
                                         BlockOrientation.get(facing));
                             }
                         }));
+    }
+
+    private BlockModelBuilder builtInBlockModel(String name) {
+        return models().getBuilder("block/" + name);
     }
 
     @Override

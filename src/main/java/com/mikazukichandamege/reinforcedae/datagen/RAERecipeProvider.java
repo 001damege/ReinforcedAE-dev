@@ -239,5 +239,14 @@ public class RAERecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', RAEItem.OPTICS_PROCESSOR)
                 .unlockedBy("hasItem", has(RAEBlock.PER_ENERGY))
                 .save(save, ReinforcedAE.makeId(RAEBlock.QUA_ENERGY.id().getPath()));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RAEBlock.DRIVE, 1)
+                .pattern("ABA")
+                .pattern("BCB")
+                .pattern("ABA")
+                .define('A', AEItems.CAPACITY_CARD)
+                .define('B', AEBlocks.DRIVE)
+                .define('C', RAEItem.OPTICS_PROCESSOR)
+                .unlockedBy("hasItem", has(AEBlocks.DRIVE))
+                .save(save, ReinforcedAE.makeId(RAEBlock.DRIVE.id().getPath()));
     }
 }
