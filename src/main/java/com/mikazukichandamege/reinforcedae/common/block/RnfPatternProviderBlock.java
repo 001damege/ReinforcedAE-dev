@@ -36,7 +36,7 @@ public class RnfPatternProviderBlock extends AEBaseEntityBlock<RnfPatternProvide
     }
 
     public static PatternProviderLogic createLogic(IManagedGridNode mainNode, PatternProviderLogicHost host) {
-        var logic = new PatternProviderLogic(mainNode, host, 81);
+        var logic = new PatternProviderLogic(mainNode, host, 144);
         var filter = new AEItemDefinitionFilter(AEItems.PROCESSING_PATTERN);
         ((AppEngInternalInventory) logic.getPatternInv()).setFilter(filter);
         return logic;
