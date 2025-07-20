@@ -7,6 +7,7 @@ import appeng.blockentity.crafting.CraftingMonitorBlockEntity;
 import appeng.blockentity.networking.EnergyCellBlockEntity;
 import com.mikazukichandamege.reinforcedae.ReinforcedAE;
 import com.mikazukichandamege.reinforcedae.common.blockentity.RnfDriveBlockEntity;
+import com.mikazukichandamege.reinforcedae.common.blockentity.RnfInscriberBlockEntity;
 import com.mikazukichandamege.reinforcedae.common.blockentity.RnfInterfaceBlockEntity;
 import com.mikazukichandamege.reinforcedae.common.blockentity.RnfPatternProviderBlockEntity;
 import com.mikazukichandamege.reinforcedae.registries.BlockDeferredRegistries;
@@ -32,6 +33,7 @@ public final class RAEBlockEntity {
     public static final Supplier<BlockEntityType<EnergyCellBlockEntity>> PER_ENERGY = create("per_energy_cell", EnergyCellBlockEntity.class, EnergyCellBlockEntity::new, RAEBlock.PER_ENERGY);
     public static final Supplier<BlockEntityType<EnergyCellBlockEntity>> QUA_ENERGY = create("qua_energy_cell", EnergyCellBlockEntity.class, EnergyCellBlockEntity::new, RAEBlock.QUA_ENERGY);
     public static final Supplier<BlockEntityType<RnfDriveBlockEntity>> DRIVE = create("rnf_drive", RnfDriveBlockEntity.class, RnfDriveBlockEntity::new, RAEBlock.DRIVE);
+    public static final Supplier<BlockEntityType<RnfInscriberBlockEntity>> INSCRIBER = create("rnf_inscriber", RnfInscriberBlockEntity.class, RnfInscriberBlockEntity::new, RAEBlock.INSCRIBER);
 
     public static final Supplier<BlockEntityType<CraftingBlockEntity>> UNIT = create(
             "rnf_crafting_unit", CraftingBlockEntity.class, CraftingBlockEntity::new,

@@ -12,7 +12,9 @@ public enum RAETranslation implements LocalizationEnum {
     Threads_1024x("Provides 1024 co-processing threads per block.", Type.TOOLTIP),
     Threads_4096x("Provides 4096 co-processing threads per block.", Type.TOOLTIP),
     Threads_16384x("Provides 16384 co-processing threads per block.", Type.TOOLTIP),
-    Threads_65536x("Provides 65536 co-processing threads per block.", Type.TOOLTIP);
+    Threads_65536x("Provides 65536 co-processing threads per block.", Type.TOOLTIP),
+    Inscriber("Reinforced Inscriber", Type.TOOLTIP)
+    ;
 
     private final String englishText;
     private final Type type;

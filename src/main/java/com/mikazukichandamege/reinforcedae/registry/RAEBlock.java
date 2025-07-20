@@ -53,6 +53,7 @@ public final class RAEBlock {
     public static final BlockDeferredRegistries<EnergyCellBlock> PER_ENERGY = block("Perfect Energy Cell", "per_energy_cell", () -> new EnergyCellBlock(805306368, 147200, 12800), RnfEnergyBlockItem::new);
     public static final BlockDeferredRegistries<EnergyCellBlock> QUA_ENERGY = block("Quantum Energy Cell", "qua_energy_cell", () -> new EnergyCellBlock(1.7179869184E10, 1177600, 128000), RnfEnergyBlockItem::new);
     public static final BlockDeferredRegistries<RnfDriveBlock> DRIVE = block("Reinforced Drive", "rnf_drive", RnfDriveBlock::new, RnfBlockItem::new);
+    public static final BlockDeferredRegistries<RnfInscriberBlock> INSCRIBER = block("Reinforced Inscriber", "rnf_inscriber", RnfInscriberBlock::new, RnfBlockItem::new);
 
     private static <T extends Block> BlockDeferredRegistries<T> block(String englishName, String id, Supplier<T> blockSupplier, @Nullable BiFunction<Block, Item.Properties, BlockItem> factory) {
         var block = DR.register(id, blockSupplier);

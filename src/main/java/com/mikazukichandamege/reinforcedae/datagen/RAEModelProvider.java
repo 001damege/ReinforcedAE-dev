@@ -14,6 +14,7 @@ import com.mikazukichandamege.reinforcedae.registries.ItemDeferredRegistries;
 import com.mikazukichandamege.reinforcedae.registry.RAEBlock;
 import com.mikazukichandamege.reinforcedae.registry.RAEItem;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.data.models.blockstates.PropertyDispatch;
 import net.minecraft.data.models.blockstates.Variant;
 import net.minecraft.data.models.blockstates.VariantProperties;
@@ -40,6 +41,14 @@ public class RAEModelProvider extends AE2BlockStateProvider {
             basicItem(item);
         }
 
+        var driveModel = builtInBlockModel("rnf_drive");
+        multiVariantGenerator(RAEBlock.DRIVE, Variant.variant().with(VariantProperties.MODEL, driveModel.getLocation()))
+                .with(createFacingSpinDispatch());
+
+        var inscriber = models().getExistingFile(ReinforcedAE.makeId("rnf_inscriber"));
+        multiVariantGenerator(RAEBlock.INSCRIBER, Variant.variant().with(VariantProperties.MODEL, inscriber.getLocation()))
+                .with(createFacingSpinDispatch());
+
         interfaceOrPatternPart(RAEItem.PATTERN_PROVIDER);
         interfaceOrPatternPart(RAEItem.INTERFACE);
 
@@ -52,6 +61,15 @@ public class RAEModelProvider extends AE2BlockStateProvider {
         energyCell(RAEBlock.QUA_ENERGY);
 
         craftingMonitor();
+    }
+
+    protected final MultiVariantGenerator multiVariantGenerator(BlockDeferredRegistries<?> blockDef, Variant... variants) {
+        if (variants.length == 0) {
+            variants = new Variant[]{Variant.variant()};
+        }
+        var builder = MultiVariantGenerator.multiVariant(blockDef.block(), variants);
+        registeredBlocks.put(blockDef.block(), () -> builder.get().getAsJsonObject());
+        return builder;
     }
 
     private String modelPath(BlockDeferredRegistries<?> block) {

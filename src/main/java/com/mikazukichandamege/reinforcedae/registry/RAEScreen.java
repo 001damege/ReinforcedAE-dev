@@ -2,9 +2,11 @@ package com.mikazukichandamege.reinforcedae.registry;
 
 import appeng.init.client.InitScreens;
 import com.mikazukichandamege.reinforcedae.common.menu.RnfDriveMenu;
+import com.mikazukichandamege.reinforcedae.common.menu.RnfInscriberMenu;
 import com.mikazukichandamege.reinforcedae.common.menu.RnfInterfaceMenu;
 import com.mikazukichandamege.reinforcedae.common.menu.RnfPatternProviderMenu;
 import com.mikazukichandamege.reinforcedae.common.screen.RnfDriveScreen;
+import com.mikazukichandamege.reinforcedae.common.screen.RnfInscriberScreen;
 import com.mikazukichandamege.reinforcedae.common.screen.RnfInterfaceScreen;
 import com.mikazukichandamege.reinforcedae.common.screen.RnfPatternProviderScreen;
 
@@ -14,6 +16,7 @@ public final class RAEScreen {
         InitScreens.register(RnfPatternProviderMenu.TYPE, RnfPatternProviderScreen<RnfPatternProviderMenu>::new, "/screens/rnf_pattern_provider.json");
         InitScreens.register(RnfInterfaceMenu.TYPE, RnfInterfaceScreen<RnfInterfaceMenu>::new, "/screens/rnf_interface.json");
         InitScreens.register(RnfDriveMenu.TYPE, RnfDriveScreen<RnfDriveMenu>::new, "/screens/rnf_drive.json");
+        InitScreens.register(RnfInscriberMenu.TYPE, RnfInscriberScreen::new, "/screens/inscriber.json");
     }
 
     private RAEScreen() {}
