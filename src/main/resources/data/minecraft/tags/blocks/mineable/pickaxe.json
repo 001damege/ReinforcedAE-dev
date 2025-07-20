@@ -20,6 +20,8 @@
     "reinforcedae:imp_energy_cell",
     "reinforcedae:adv_energy_cell",
     "reinforcedae:per_energy_cell",
-    "reinforcedae:qua_energy_cell"
+    "reinforcedae:qua_energy_cell",
+    "reinforcedae:rnf_drive",
+    "reinforcedae:rnf_inscriber"
   ]
 }

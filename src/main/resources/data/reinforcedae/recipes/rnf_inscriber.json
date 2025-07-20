@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "ae2:capacity_card"
+    },
+    "B": {
+      "item": "ae2:inscriber"
+    },
+    "C": {
+      "item": "reinforcedae:optics_processor"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "item": "reinforcedae:rnf_inscriber"
+  },
+  "show_notification": true
+}
