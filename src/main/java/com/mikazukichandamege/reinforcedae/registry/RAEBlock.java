@@ -52,6 +52,7 @@ public final class RAEBlock {
     public static final BlockDeferredRegistries<EnergyCellBlock> ADV_ENERGY = block("Advanced Energy Cell", "adv_energy_cell", () -> new EnergyCellBlock(115343360, 18400, 12800), RnfEnergyBlockItem::new);
     public static final BlockDeferredRegistries<EnergyCellBlock> PER_ENERGY = block("Perfect Energy Cell", "per_energy_cell", () -> new EnergyCellBlock(805306368, 147200, 12800), RnfEnergyBlockItem::new);
     public static final BlockDeferredRegistries<EnergyCellBlock> QUA_ENERGY = block("Quantum Energy Cell", "qua_energy_cell", () -> new EnergyCellBlock(1.7179869184E10, 1177600, 128000), RnfEnergyBlockItem::new);
+    public static final BlockDeferredRegistries<EnergyCellBlock> INF_ENERGY = block("Infinity Energy Cell", "inf_energy_cell", () -> new EnergyCellBlock(9223372036854775807L, 2147483647, 128000), RnfEnergyBlockItem::new);
     public static final BlockDeferredRegistries<RnfDriveBlock> DRIVE = block("Reinforced Drive", "rnf_drive", RnfDriveBlock::new, RnfBlockItem::new);
     public static final BlockDeferredRegistries<RnfInscriberBlock> INSCRIBER = block("Reinforced Inscriber", "rnf_inscriber", RnfInscriberBlock::new, RnfBlockItem::new);
 

@@ -32,6 +32,7 @@ public final class RAEBlockEntity {
     public static final Supplier<BlockEntityType<EnergyCellBlockEntity>> ADV_ENERGY = create("adv_energy_cell", EnergyCellBlockEntity.class, EnergyCellBlockEntity::new, RAEBlock.ADV_ENERGY);
     public static final Supplier<BlockEntityType<EnergyCellBlockEntity>> PER_ENERGY = create("per_energy_cell", EnergyCellBlockEntity.class, EnergyCellBlockEntity::new, RAEBlock.PER_ENERGY);
     public static final Supplier<BlockEntityType<EnergyCellBlockEntity>> QUA_ENERGY = create("qua_energy_cell", EnergyCellBlockEntity.class, EnergyCellBlockEntity::new, RAEBlock.QUA_ENERGY);
+    public static final Supplier<BlockEntityType<EnergyCellBlockEntity>> INF_ENERGY = create("inf_energy_cell", EnergyCellBlockEntity.class, EnergyCellBlockEntity::new, RAEBlock.INF_ENERGY);
     public static final Supplier<BlockEntityType<RnfDriveBlockEntity>> DRIVE = create("rnf_drive", RnfDriveBlockEntity.class, RnfDriveBlockEntity::new, RAEBlock.DRIVE);
     public static final Supplier<BlockEntityType<RnfInscriberBlockEntity>> INSCRIBER = create("rnf_inscriber", RnfInscriberBlockEntity.class, RnfInscriberBlockEntity::new, RAEBlock.INSCRIBER);
 
